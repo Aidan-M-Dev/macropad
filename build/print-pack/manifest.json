@@ -3,17 +3,29 @@
   "face": "top",
   "orientation": "Image top points towards USB edge; keys viewed from above with USB at top.",
   "rgb_note": "sRGB design targets; supplier colour proof and material matching required.",
-  "production_note": "Preview keycap profile and print area are provisional. Confirm vendor cap profile, safe area/bleed, material and printing process before production. STL contains geometry only, not colour or printed artwork.",
+  "production_note": "Preview keycap profile and print area are provisional. Confirm vendor cap profile, safe area/bleed, material and printing process before production. STL contains geometry only, not colour or printed artwork. PCB layers are artwork exports; transfer approved art into the PCB fabrication design separately.",
   "dpi": 600,
   "safe_margin_mm": 0.6,
   "case": {
     "base": {
+      "colour": "#374E61",
+      "material": "solid",
       "rgb": [
         55,
         78,
         97
       ],
-      "opacity": 1.0
+      "opacity": 1
+    },
+    "frame": {
+      "colour": "#374E61",
+      "material": "solid",
+      "rgb": [
+        55,
+        78,
+        97
+      ],
+      "opacity": 1
     }
   },
   "keys": [
@@ -26,8 +38,11 @@
         229,
         214
       ],
-      "preview_opacity": 1.0,
-      "source_image": "artwork/ic-hack-logo.png",
+      "body_colour": "#E9E5D6",
+      "material": "solid",
+      "preview_opacity": 1,
+      "source_image": "SW1.png",
+      "resolved_image": "default-keycap.png",
       "artwork_png": "artwork-adb2a11aba9c.png",
       "artwork_svg": "artwork-adb2a11aba9c.svg",
       "top_face_mm": [
@@ -35,8 +50,8 @@
         14.64
       ],
       "artwork_size_mm": [
-        12,
-        12
+        14.64,
+        14.64
       ],
       "rotation_deg": 0,
       "png_pixels": [
@@ -53,8 +68,11 @@
         229,
         214
       ],
-      "preview_opacity": 1.0,
-      "source_image": "artwork/ic-hack-logo.png",
+      "body_colour": "#E9E5D6",
+      "material": "solid",
+      "preview_opacity": 1,
+      "source_image": "SW2.png",
+      "resolved_image": "default-keycap.png",
       "artwork_png": "artwork-adb2a11aba9c.png",
       "artwork_svg": "artwork-adb2a11aba9c.svg",
       "top_face_mm": [
@@ -62,8 +80,8 @@
         14.64
       ],
       "artwork_size_mm": [
-        12,
-        12
+        14.64,
+        14.64
       ],
       "rotation_deg": 0,
       "png_pixels": [
@@ -80,8 +98,11 @@
         229,
         214
       ],
-      "preview_opacity": 1.0,
-      "source_image": "artwork/ic-hack-logo.png",
+      "body_colour": "#E9E5D6",
+      "material": "solid",
+      "preview_opacity": 1,
+      "source_image": "SW3.png",
+      "resolved_image": "default-keycap.png",
       "artwork_png": "artwork-adb2a11aba9c.png",
       "artwork_svg": "artwork-adb2a11aba9c.svg",
       "top_face_mm": [
@@ -89,8 +110,8 @@
         14.64
       ],
       "artwork_size_mm": [
-        12,
-        12
+        14.64,
+        14.64
       ],
       "rotation_deg": 0,
       "png_pixels": [
@@ -107,8 +128,11 @@
         229,
         214
       ],
-      "preview_opacity": 1.0,
-      "source_image": "artwork/ic-hack-logo.png",
+      "body_colour": "#E9E5D6",
+      "material": "solid",
+      "preview_opacity": 1,
+      "source_image": "SW4.png",
+      "resolved_image": "default-keycap.png",
       "artwork_png": "artwork-adb2a11aba9c.png",
       "artwork_svg": "artwork-adb2a11aba9c.svg",
       "top_face_mm": [
@@ -116,8 +140,8 @@
         14.64
       ],
       "artwork_size_mm": [
-        12,
-        12
+        14.64,
+        14.64
       ],
       "rotation_deg": 0,
       "png_pixels": [
@@ -134,8 +158,11 @@
         229,
         214
       ],
-      "preview_opacity": 1.0,
-      "source_image": "artwork/ic-hack-logo.png",
+      "body_colour": "#E9E5D6",
+      "material": "solid",
+      "preview_opacity": 1,
+      "source_image": "SW5.png",
+      "resolved_image": "default-keycap.png",
       "artwork_png": "artwork-adb2a11aba9c.png",
       "artwork_svg": "artwork-adb2a11aba9c.svg",
       "top_face_mm": [
@@ -143,8 +170,8 @@
         14.64
       ],
       "artwork_size_mm": [
-        12,
-        12
+        14.64,
+        14.64
       ],
       "rotation_deg": 0,
       "png_pixels": [
@@ -161,8 +188,11 @@
         229,
         214
       ],
-      "preview_opacity": 1.0,
-      "source_image": "artwork/ic-hack-logo.png",
+      "body_colour": "#E9E5D6",
+      "material": "solid",
+      "preview_opacity": 1,
+      "source_image": "SW6.png",
+      "resolved_image": "default-keycap.png",
       "artwork_png": "artwork-adb2a11aba9c.png",
       "artwork_svg": "artwork-adb2a11aba9c.svg",
       "top_face_mm": [
@@ -170,8 +200,8 @@
         14.64
       ],
       "artwork_size_mm": [
-        12,
-        12
+        14.64,
+        14.64
       ],
       "rotation_deg": 0,
       "png_pixels": [
@@ -180,8 +210,40 @@
       ]
     }
   ],
+  "board": {
+    "front": {
+      "source_image": "board-front.png",
+      "resolved_image": null,
+      "artwork_png": "board-front.png",
+      "artwork_svg": "board-front.svg",
+      "size_mm": [
+        70,
+        60
+      ],
+      "mirrored": false,
+      "view": "Looking at this face, USB edge at top",
+      "has_artwork": false
+    },
+    "back": {
+      "source_image": "board-back.png",
+      "resolved_image": null,
+      "artwork_png": "board-back.png",
+      "artwork_svg": "board-back.svg",
+      "size_mm": [
+        70,
+        60
+      ],
+      "mirrored": false,
+      "view": "Looking at this face, USB edge at top",
+      "has_artwork": false
+    }
+  },
   "generated_files": [
     "artwork-adb2a11aba9c.png",
-    "artwork-adb2a11aba9c.svg"
+    "artwork-adb2a11aba9c.svg",
+    "board-back.png",
+    "board-back.svg",
+    "board-front.png",
+    "board-front.svg"
   ]
 }

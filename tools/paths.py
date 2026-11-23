@@ -4,6 +4,7 @@ from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parents[1]
 CASE = PROJECT / "case"
+DESIGN = PROJECT / "appearance"
 ACCESSORIES = PROJECT / "accessories"
 PCB = PROJECT / "hardware" / "IC Hack Macro Pad.kicad_pcb"
 BUILD = PROJECT / "build"

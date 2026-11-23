@@ -492,10 +492,10 @@ module assembly(explode=0) {
     color(rgb01(appearance_case_base_rgb),appearance_case_base_opacity) base();
     if(!with_top_frame) color(rgb01(appearance_case_base_rgb)) translate([0,0,1.5*explode]) washers();
     if(with_top_frame) {
-        color(rgb01(appearance_case_base_rgb)) translate([0,0,1.7*explode]) top_frame();
+        color(rgb01(appearance_case_frame_rgb),appearance_case_frame_opacity) translate([0,0,1.7*explode]) top_frame();
     }
     if(show_electronics) {
-        color("#177a60") translate([0,0,explode]) pcb_proxy();
+        color(rgb01(appearance_board_rgb)) translate([0,0,explode]) pcb_proxy();
         color("#d1d7d9") translate([0,0,explode]) usb_proxy();
         color("#373c42") translate([0,0,with_top_frame ? 2.5*explode : explode]) switches();
         translate([0,0,with_top_frame ? 3.5*explode : explode]) keycaps();
@@ -521,8 +521,8 @@ module underside_keepout() {
     }
 }
 module screen_keepout() {bounds_prism(screen_body,0,pcb_top+screen_mount_gap,screen_board_thickness+screen_glass_height);}
-if(part=="top_frame") top_frame_print();
-else if(part=="top_frame_assembled") top_frame();
+if(part=="top_frame") color(rgb01(appearance_case_frame_rgb),appearance_case_frame_opacity) top_frame_print();
+else if(part=="top_frame_assembled") color(rgb01(appearance_case_frame_rgb),appearance_case_frame_opacity) top_frame();
 else if(part=="check_frame_electronics") intersection() {
     top_frame(); union() {
         // Exclude the intentional foot/PCB bearing contact at the top face.

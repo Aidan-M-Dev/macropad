@@ -11,7 +11,21 @@
     "opaque_foreground_hides_transparent_parts_behind": true
   },
   {
-    "invalid_rgb_rejected": true
+    "invalid_hex_colour_rejected": true
+  },
+  {
+    "independent_hex_base_and_frame_colours": true,
+    "transparent_petg_preset_applied_to_frame": true,
+    "invalid_materials_rejected": true
+  },
+  {
+    "board_png_canvas_position_preserved": true,
+    "front_and_back_readable_without_manual_mirroring": true,
+    "board_artwork_pack_has_physical_dimensions": true,
+    "optional_drop_in_artwork_and_keycap_fallback": true
+  },
+  {
+    "artist_guides_and_blank_canvases_match_export_dimensions": true
   },
   {
     "vendor_pack_matches_configured_artwork": true,

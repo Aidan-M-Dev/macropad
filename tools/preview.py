@@ -4,7 +4,7 @@ import re,json
 from pathlib import Path
 import numpy as np
 from PIL import Image,ImageFilter,ImageDraw,ImageFont
-from appearance import load_config,sync_scad,artwork_canvas,export_print_pack
+from appearance import load_config,sync_scad,artwork_canvas,export_print_pack,board_artwork_canvas
 
 def load(path):
  # OpenSCAD's default ASCII STL.
@@ -97,7 +97,7 @@ def scene(exploded=False,empty=False,config=None,length=6):
     data.append(item('base',load(BUILD/f'exports/base-m3x{length}.stl'),base['rgb'],base.get('opacity',1),**finish(base)))
     if not empty:
         hardware=[('nuts',[184,190,198])]
-        for name,rgb in [('washers',base['rgb']),('pcb',[29,126,91]),('switches',[55,60,66]),('screen_board',[36,91,145]),('screen_glass',[16,22,28]),('screen_face',[108,184,208]),('screen_contacts',[209,174,99]),('screen_components',[52,55,59]),('screen_headers',[32,37,42]),('usb',[176,188,196]),('top_screws',[184,190,198]),*hardware]:
+        for name,rgb in [('washers',base['rgb']),('pcb',cfg['board']['rgb']),('switches',[55,60,66]),('screen_board',[36,91,145]),('screen_glass',[16,22,28]),('screen_face',[108,184,208]),('screen_contacts',[209,174,99]),('screen_components',[52,55,59]),('screen_headers',[32,37,42]),('usb',[176,188,196]),('top_screws',[184,190,198]),*hardware]:
             shift=-14 if exploded and name=='nuts' else 28 if exploded and name=='top_screws' else 21 if exploded and name=='washers' else 14 if exploded and name not in ['top_screws','nuts'] else 0
             mesh=load(refdir/(name+'.stl'))
             if name=='top_screws':
@@ -112,6 +112,12 @@ def scene(exploded=False,empty=False,config=None,length=6):
         ids=np.array([[0,1,2],[0,2,3]]);uv=np.array([[0,0],[1,0],[1,1],[0,1]])
         data.append(item('pcb-silkscreen',points[ids],[255,255,255],shift=14 if exploded else 0,
                          texture=SILK_TEXTURE,uv=uv[ids]))
+        for side,level in [('front',z-.004),('back',float(load(refdir/'pcb.stl')[:,:,2].min())-.012)]:
+            art=board_artwork_canvas(cfg,side)
+            if not art.getbbox():continue
+            if side=='back':art=art.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+            p=np.array([[0,60,level],[70,60,level],[70,0,level],[0,0,level]])
+            data.append(item('board-artwork-'+side,p[ids],[255,255,255],texture=np.asarray(art,dtype=np.float32),uv=uv[ids],shift=14 if exploded else 0))
         for i,(mesh,face,key) in enumerate(zip(key_meshes,faces,cfg['keycaps'])):
             shift=14 if exploded else 0
             data.append(item(f'keycap-{i+1}',mesh,key['rgb'],key.get('opacity',1),shift=shift))
@@ -128,7 +134,7 @@ def scene(exploded=False,empty=False,config=None,length=6):
 def render(data,name,title='',subtitle='',view=(105,-145,125),focus=None):
     eye=np.array(view,dtype=float);forward=-eye/np.linalg.norm(eye)
     right=np.cross(forward,[0,0,1])
-    if np.linalg.norm(right)<1e-8:right=np.array([1.,0.,0.])
+    if np.linalg.norm(right)<1e-8:right=np.array([-1. if forward[2]>0 else 1.,0.,0.])
     right/=np.linalg.norm(right);up=np.cross(right,forward)
     basis=np.array([right,up,-forward]).T
     points=np.concatenate([m['mesh'].reshape(-1,3) for m in data])
@@ -235,7 +241,7 @@ if __name__=='__main__':
     results=[validate(BUILD/'exports'/n) for n in ['base-m3x6.stl','accessories/washer-0.6mm.stl','accessories/nut-fit-test-m3.stl']]
     (BUILD/'exports/mesh-checks.json').write_text(json.dumps(results,indent=2)+'\n')
     manifest=export_print_pack(CFG,FACES)
-    print(f'Print pack: six key assignments, {len(manifest["generated_files"])//2} unique artwork designs.',flush=True)
+    print('Print pack: six key assignments and front/back PCB artwork layers.',flush=True)
     if not args.assets_only:
-        for script in ['preview_top_frame.py','frame_section.py']:
+        for script in ['preview_top_frame.py','frame_section.py','render_board.py']:
             subprocess.run([sys.executable,str(Path(__file__).with_name(script))],check=True)

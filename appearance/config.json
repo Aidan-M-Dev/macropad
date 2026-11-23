@@ -1,0 +1,126 @@
+{
+  "case": {
+    "base": {
+      "colour": "#374E61",
+      "material": "solid"
+    },
+    "frame": {
+      "colour": "#374E61",
+      "material": "solid"
+    }
+  },
+  "keycaps": [
+    {
+      "id": "SW1",
+      "colour": "#E9E5D6",
+      "material": "solid",
+      "image": "SW1.png",
+      "optional": true,
+      "fallback_image": "default-keycap.png",
+      "artwork_size_mm": [
+        14.64,
+        14.64
+      ],
+      "rotation_deg": 0
+    },
+    {
+      "id": "SW2",
+      "colour": "#E9E5D6",
+      "material": "solid",
+      "image": "SW2.png",
+      "optional": true,
+      "fallback_image": "default-keycap.png",
+      "artwork_size_mm": [
+        14.64,
+        14.64
+      ],
+      "rotation_deg": 0
+    },
+    {
+      "id": "SW3",
+      "colour": "#E9E5D6",
+      "material": "solid",
+      "image": "SW3.png",
+      "optional": true,
+      "fallback_image": "default-keycap.png",
+      "artwork_size_mm": [
+        14.64,
+        14.64
+      ],
+      "rotation_deg": 0
+    },
+    {
+      "id": "SW4",
+      "colour": "#E9E5D6",
+      "material": "solid",
+      "image": "SW4.png",
+      "optional": true,
+      "fallback_image": "default-keycap.png",
+      "artwork_size_mm": [
+        14.64,
+        14.64
+      ],
+      "rotation_deg": 0
+    },
+    {
+      "id": "SW5",
+      "colour": "#E9E5D6",
+      "material": "solid",
+      "image": "SW5.png",
+      "optional": true,
+      "fallback_image": "default-keycap.png",
+      "artwork_size_mm": [
+        14.64,
+        14.64
+      ],
+      "rotation_deg": 0
+    },
+    {
+      "id": "SW6",
+      "colour": "#E9E5D6",
+      "material": "solid",
+      "image": "SW6.png",
+      "optional": true,
+      "fallback_image": "default-keycap.png",
+      "artwork_size_mm": [
+        14.64,
+        14.64
+      ],
+      "rotation_deg": 0
+    }
+  ],
+  "board": {
+    "colour": "#1D7E5B",
+    "front": {
+      "image": "board-front.png",
+      "optional": true,
+      "artwork_size_mm": [
+        70,
+        60
+      ],
+      "centre_mm": [
+        35,
+        30
+      ],
+      "rotation_deg": 0
+    },
+    "back": {
+      "image": "board-back.png",
+      "optional": true,
+      "artwork_size_mm": [
+        70,
+        60
+      ],
+      "centre_mm": [
+        35,
+        30
+      ],
+      "rotation_deg": 0
+    }
+  },
+  "print": {
+    "dpi": 600,
+    "safe_margin_mm": 0.6,
+    "trim_transparent_padding": false
+  }
+}

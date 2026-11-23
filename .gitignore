@@ -1,5 +1,6 @@
 # Keep current deliverables in Git; ignore intermediate meshes, caches and logs.
 /build/*
+!/build/appearance-handoff.zip
 !/build/exports/
 /build/exports/*
 !/build/exports/*.stl

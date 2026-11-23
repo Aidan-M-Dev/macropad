@@ -2,6 +2,8 @@
 
 Six-key USB macropad with an OLED, addressable LEDs and a printable enclosure.
 
+**Editing the appearance?** Start with the [artist handoff guide](appearance/README.md), or download the [self-contained handoff ZIP](build/appearance-handoff.zip). The [`appearance/`](appearance/) folder contains the colour config, PNG templates and image drop folder. No KiCad knowledge is needed.
+
 The current enclosure uses four **M3 × 10 mm socket-cap screws**, four underside M3 nuts and one retaining frame, with **no separate washers**. Choose either the [minimal frame](build/exports/top-frame.stl) or the [reinforced frame](build/exports/top-frame-reinforced.stl).
 
 ![Reinforced frame assembly](build/previews/top-frame-reinforced-assembly.png)
@@ -13,7 +15,8 @@ The current enclosure uses four **M3 × 10 mm socket-cap screws**, four undersid
 | Folder | What belongs here |
 | --- | --- |
 | [`hardware/`](hardware/) | KiCad project, schematic, PCB and supplied STEP reference |
-| [`case/`](case/README.md) | Enclosure CAD, presets, appearance settings and keycap artwork |
+| [`case/`](case/README.md) | Enclosure CAD and presets |
+| [`appearance/`](appearance/README.md) | Teammate handoff: hex colours, image drop folder and PNG guides |
 | [`accessories/`](accessories/README.md) | Printable washers and M3 nut-fit tester |
 | [`firmware/`](firmware/README.md) | Custom on-device software, board pin map and bring-up notes |
 | `tools/` | Shared Python build, rendering and verification scripts |
@@ -39,6 +42,7 @@ make build     # Export printable parts and run exact clearance checks
 make preview   # Build as needed, then refresh renders and supplier artwork
 make check     # Refresh previews, then run the full design checks
 make board     # Render front/back PCB images
+make templates # Regenerate the artist’s PNG guides and blank canvases
 make top-frame # Build and preview the minimal switch retaining top
 make all       # Full checks plus board images
 ```
@@ -51,7 +55,7 @@ make all       # Full checks plus board images
 - **Enclosure dimensions:** edit `case/macropad_case.scad`, then run `make check`. Existing dimensional checks encode the current design; deliberate dimension changes may require updating their expected measurements.
 - **OpenSCAD preview:** run `make prepare`, then open `case/macropad_case.scad` and select a preset. `base-m3x6.scad` opens the existing compact printable base. The active frame assembly uses M3 × 10 mm screws.
 - **Accessories:** open an entry point in `accessories/`. Accessory modules share the enclosure's fastener dimensions so fit stays consistent.
-- **Colours and keycap images:** edit `case/appearance.json` and images in `case/artwork/`, then run `make preview`. See [appearance notes](case/APPEARANCE.md).
+- **Colours, keycap images and PCB artwork:** edit `appearance/config.json` and images in `appearance/images/`, then run `make preview`. See [appearance notes](case/APPEARANCE.md).
 - **Custom software:** start in [`firmware/`](firmware/README.md); the pin map is taken from this PCB.
 
 ## Outputs
@@ -66,6 +70,7 @@ make all       # Full checks plus board images
 | `build/exports/*-checks.json` | Verification reports |
 | `build/exports/logs/` | OpenSCAD export and clearance logs |
 | `build/print-pack/` | Keycap artwork, manifest and supplier CSV |
+| `build/appearance-handoff.zip` | Self-contained artist handoff, also available as the `appearance/` folder |
 | `build/board/` | Front/back PCB PNG and SVG |
 | `build/generated/` | Extracted board datums, silkscreen and generated CAD colours |
 

@@ -6,4 +6,5 @@
 
 # Generated deliverables stay downloadable without dominating code reviews.
 /build/** linguist-generated=true
+/appearance/templates/** linguist-generated=true
 /build/board/*.svg -diff

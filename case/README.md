@@ -60,7 +60,7 @@ Hardware assumptions: regular M3 nuts **5.5 mm AF × 2.4 mm thick**; socket-cap 
 
 [Current frame views, both versions and cross-section](TOP-FRAME.md).
 
-Colours, keycap artwork and opacity remain controlled by `appearance.json`; see [APPEARANCE.md](APPEARANCE.md). PCB silkscreen is extracted from the existing KiCad board; these renders are visual references, not fabrication output. Keycaps and electronics are simplified references.
+Colours, keycap artwork and opacity remain controlled by `../appearance/config.json`; see [APPEARANCE.md](APPEARANCE.md). PCB silkscreen is extracted from the existing KiCad board; these renders are visual references, not fabrication output. Keycaps and electronics are simplified references.
 
 ## Regeneration and verification
 
@@ -73,7 +73,7 @@ make preview   # Builds as needed, then regenerates all renders and artwork
 make check     # Refreshes previews and runs the full checks
 ```
 
-The Makefile handles dependencies, including extracting the PCB geometry when the KiCad board changes. Colour/artwork edits reuse meshes. Generated CAD inputs are in `../build/generated/`; edit the board or `appearance.json` instead. Generated STLs, reports and logs are in `../build/exports/`, images in `../build/previews/`, and supplier artwork in `../build/print-pack/`.
+The Makefile handles dependencies, including extracting the PCB geometry when the KiCad board changes. Colour/artwork edits reuse meshes. Generated CAD inputs are in `../build/generated/`; edit the board or `../appearance/config.json` instead. Generated STLs, reports and logs are in `../build/exports/`, images in `../build/previews/`, and supplier artwork in `../build/print-pack/`.
 
 `make build` checks exact empty CSG intersections for the PCB, washers, screen (including its header housings), screen/PCB insertion, key travel, underside USB, the 3.5 mm component envelope, fasteners and hardware against electronics. `make check` also validates parameter assertions, measured STL sections, manifold geometry, artwork and annotation layout.
 
