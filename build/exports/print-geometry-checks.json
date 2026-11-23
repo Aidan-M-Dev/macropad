@@ -1,0 +1,53 @@
+[
+  {
+    "file": "base-m3x6.stl",
+    "case_wall_mm": 0.8,
+    "bottom_skin_mm": 0.4,
+    "ribs_removed": true,
+    "rounded_underside": true,
+    "broader_bottom_corners": true,
+    "nut_pocket_af_mm": 5.7,
+    "pocket_wall_mm": 0.8,
+    "tube_wall_mm": 0.8,
+    "gradual_hex_to_bore": true,
+    "max_inward_step_per_02mm_layer_mm": 0.3817
+  },
+  {
+    "file": "base-m3x6.stl",
+    "uniform_rim_height_above_pcb_mm": 2.2,
+    "screen_shelf_height_above_pcb_mm": 2.2,
+    "screen_shelf_width_mm": 38,
+    "shelf_ends_match_screen_bounds": true,
+    "full_rear_screen_edge_supported": true,
+    "header_clearance_and_rear_screw_access_verified": true,
+    "screen_shelf_slope_degrees_from_bed": 30.0,
+    "screen_gap_mm": 0.3,
+    "chamfered_slide_entry": true,
+    "pcb_space_below_shelf_verified": true
+  },
+  {
+    "file": "nut-fit-test-m3.stl",
+    "pocket_af_sizes_mm": [
+      5.45,
+      5.5,
+      5.6,
+      5.7,
+      5.8,
+      5.85
+    ],
+    "same_pocket_walls_leadin_and_roof_as_case": true
+  },
+  {
+    "file": "washers-0.6mm.stl",
+    "washer_height_mm": 0.6,
+    "washer_count": 4,
+    "on_print_bed": true
+  },
+  {
+    "usb_opening_width_mm": 10.4,
+    "usb_opening_height_mm": 6.8,
+    "usb_bridge_thickness_mm": 0.8,
+    "under_board_connector_clearance_verified": true,
+    "continuous_usb_roof_measured_in_compact_base": true
+  }
+]

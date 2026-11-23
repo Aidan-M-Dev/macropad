@@ -1,0 +1,59 @@
+[
+  {
+    "file": "base-m3x6.stl",
+    "triangles": 5496,
+    "closed_edge_manifold": true,
+    "connected_components": 1,
+    "volume_mm3": 3630.76,
+    "bounds_mm": [
+      [
+        -1.15,
+        -1.15,
+        0.0
+      ],
+      [
+        71.15,
+        61.15,
+        8.0
+      ]
+    ]
+  },
+  {
+    "file": "washer-0.6mm.stl",
+    "triangles": 384,
+    "closed_edge_manifold": true,
+    "connected_components": 1,
+    "volume_mm3": 6.32,
+    "bounds_mm": [
+      [
+        -2.5,
+        -2.5,
+        0.0
+      ],
+      [
+        2.5,
+        2.5,
+        0.6
+      ]
+    ]
+  },
+  {
+    "file": "nut-fit-test-m3.stl",
+    "triangles": 9716,
+    "closed_edge_manifold": true,
+    "connected_components": 1,
+    "volume_mm3": 758.9,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        66.0,
+        16.0,
+        4.2
+      ]
+    ]
+  }
+]

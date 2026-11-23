@@ -1,0 +1,9 @@
+# CAD exchanges and meshes are reviewed as complete files, not line diffs.
+*.stl binary
+*.step binary
+*.stp binary
+*.csv text eol=lf
+
+# Generated deliverables stay downloadable without dominating code reviews.
+/build/** linguist-generated=true
+/build/board/*.svg -diff

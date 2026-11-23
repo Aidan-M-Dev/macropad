@@ -1,0 +1,7 @@
+key,row,column,R,G,B,artwork,top_face_width_mm,rotation_deg
+SW1,USB row,1,233,229,214,artwork-adb2a11aba9c.png,14.64,0
+SW2,USB row,2,233,229,214,artwork-adb2a11aba9c.png,14.64,0
+SW3,USB row,3,233,229,214,artwork-adb2a11aba9c.png,14.64,0
+SW4,user row,1,233,229,214,artwork-adb2a11aba9c.png,14.64,0
+SW5,user row,2,233,229,214,artwork-adb2a11aba9c.png,14.64,0
+SW6,user row,3,233,229,214,artwork-adb2a11aba9c.png,14.64,0

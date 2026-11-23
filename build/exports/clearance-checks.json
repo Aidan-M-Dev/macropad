@@ -1,0 +1,47 @@
+[
+  {
+    "screw_length_mm": 6,
+    "intersection": "hardware_electronics",
+    "empty": true
+  },
+  {
+    "screw_length_mm": 6,
+    "intersection": "washers",
+    "empty": true
+  },
+  {
+    "screw_length_mm": 6,
+    "intersection": "pcb",
+    "empty": true
+  },
+  {
+    "screw_length_mm": 6,
+    "intersection": "screen",
+    "empty": true
+  },
+  {
+    "screw_length_mm": 6,
+    "intersection": "screen_insertion",
+    "empty": true
+  },
+  {
+    "screw_length_mm": 6,
+    "intersection": "keys",
+    "empty": true
+  },
+  {
+    "screw_length_mm": 6,
+    "intersection": "usb",
+    "empty": true
+  },
+  {
+    "screw_length_mm": 6,
+    "intersection": "underside",
+    "empty": true
+  },
+  {
+    "screw_length_mm": 6,
+    "intersection": "fasteners",
+    "empty": true
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "six_independent_rgb_assignments_and_correct_cap_centres": true
+  },
+  {
+    "texture_uv_orientation_correct": true,
+    "transparent_artwork_reveals_key_body": true
+  },
+  {
+    "opacity_order_independent_per_pixel": true,
+    "opaque_foreground_hides_transparent_parts_behind": true
+  },
+  {
+    "invalid_rgb_rejected": true
+  },
+  {
+    "vendor_pack_matches_configured_artwork": true,
+    "identical_artwork_deduplicated": true,
+    "both_frame_version_views_present": true,
+    "section_annotation_spacing": true
+  }
+]

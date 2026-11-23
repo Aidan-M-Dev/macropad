@@ -1,0 +1,201 @@
+[
+  {
+    "case": "compact-m3x6",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "too-short-m3x4",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "no-washer",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "thin-washer",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "underside-clearance",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "rim-no-protection",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "rim-keycap",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "rim-below-shelf",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "tall-rib",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "thin-skin",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "thin-roof",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "thick-roof-compact",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "no-leadin",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "steep-taper",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "taper-above-boss",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "no-bearing-ledge",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "narrow-usb",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "deep-usb",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "thin-usb-bridge",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "blocked-usb",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "socket-through-head",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "fine-layers",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "shelf-too-high",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "shelf-tight-relief",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "shelf-invalid-slope",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "shelf-no-entry",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "shelf-on-pcb",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "shelf-steep-overhang",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "header-too-short",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "assembly",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "exploded",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "section",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "print",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "washer_set",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "nut_fit_test",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "base-wrapper-6",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "nut-test-wrapper",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "washer-wrapper",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "screw_length_mm": 6,
+    "case_height_mm": 8,
+    "underside_space_mm": 3.8,
+    "full_nut_engagement_mm": 2.4,
+    "screw_tip_recess_mm": 0.4,
+    "nut_pocket_af_mm": 5.7,
+    "under_board_usb_verified": true
+  }
+]

@@ -1,0 +1,109 @@
+{
+  "case": {
+    "base": {
+      "rgb": [
+        55,
+        78,
+        97
+      ],
+      "opacity": 1.0
+    }
+  },
+  "keycaps": [
+    {
+      "id": "SW1",
+      "rgb": [
+        233,
+        229,
+        214
+      ],
+      "opacity": 1.0,
+      "image": "artwork/ic-hack-logo.png",
+      "artwork_size_mm": [
+        12,
+        12
+      ],
+      "rotation_deg": 0
+    },
+    {
+      "id": "SW2",
+      "rgb": [
+        233,
+        229,
+        214
+      ],
+      "opacity": 1.0,
+      "image": "artwork/ic-hack-logo.png",
+      "artwork_size_mm": [
+        12,
+        12
+      ],
+      "rotation_deg": 0
+    },
+    {
+      "id": "SW3",
+      "rgb": [
+        233,
+        229,
+        214
+      ],
+      "opacity": 1.0,
+      "image": "artwork/ic-hack-logo.png",
+      "artwork_size_mm": [
+        12,
+        12
+      ],
+      "rotation_deg": 0
+    },
+    {
+      "id": "SW4",
+      "rgb": [
+        233,
+        229,
+        214
+      ],
+      "opacity": 1.0,
+      "image": "artwork/ic-hack-logo.png",
+      "artwork_size_mm": [
+        12,
+        12
+      ],
+      "rotation_deg": 0
+    },
+    {
+      "id": "SW5",
+      "rgb": [
+        233,
+        229,
+        214
+      ],
+      "opacity": 1.0,
+      "image": "artwork/ic-hack-logo.png",
+      "artwork_size_mm": [
+        12,
+        12
+      ],
+      "rotation_deg": 0
+    },
+    {
+      "id": "SW6",
+      "rgb": [
+        233,
+        229,
+        214
+      ],
+      "opacity": 1.0,
+      "image": "artwork/ic-hack-logo.png",
+      "artwork_size_mm": [
+        12,
+        12
+      ],
+      "rotation_deg": 0
+    }
+  ],
+  "print": {
+    "dpi": 600,
+    "safe_margin_mm": 0.6,
+    "trim_transparent_padding": true
+  }
+}

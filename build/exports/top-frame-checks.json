@@ -1,0 +1,89 @@
+{
+  "frames": [
+    {
+      "file": "top-frame.stl",
+      "triangles": 4786,
+      "closed_edge_manifold": true,
+      "connected_components": 1,
+      "volume_mm3": 1120.62,
+      "bounds_mm": [
+        [
+          -0.25,
+          -0.25,
+          0.0
+        ],
+        [
+          70.25,
+          60.25,
+          5.0
+        ]
+      ]
+    },
+    {
+      "file": "top-frame-reinforced.stl",
+      "triangles": 4770,
+      "closed_edge_manifold": true,
+      "connected_components": 1,
+      "volume_mm3": 1174.56,
+      "bounds_mm": [
+        [
+          -0.25,
+          -0.25,
+          0.0
+        ],
+        [
+          70.25,
+          60.25,
+          5.0
+        ]
+      ]
+    }
+  ],
+  "separate_washers": 0,
+  "clearances": [
+    {
+      "variant": "frame",
+      "base_original_screw_mm": 6,
+      "intersection": "electronics",
+      "empty": true
+    },
+    {
+      "variant": "frame",
+      "base_original_screw_mm": 6,
+      "intersection": "base",
+      "empty": true
+    },
+    {
+      "variant": "frame",
+      "base_original_screw_mm": 6,
+      "intersection": "hardware",
+      "empty": true
+    },
+    {
+      "variant": "frame-reinforced",
+      "base_original_screw_mm": 6,
+      "intersection": "electronics",
+      "empty": true
+    },
+    {
+      "variant": "frame-reinforced",
+      "base_original_screw_mm": 6,
+      "intersection": "base",
+      "empty": true
+    },
+    {
+      "variant": "frame-reinforced",
+      "base_original_screw_mm": 6,
+      "intersection": "hardware",
+      "empty": true
+    }
+  ],
+  "aperture_mm": 14,
+  "clip_land_mm": 1.6,
+  "screws_by_original_base": {
+    "M3x6": "M3x10"
+  },
+  "head_recess_mm": 0.4,
+  "frame_foot_height_mm": 3.4,
+  "physical_clone_clip_and_keycap_fit": "Requires physical fit check; simplified electronics references only"
+}

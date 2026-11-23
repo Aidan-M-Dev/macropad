@@ -1,0 +1,42 @@
+{
+  "part": "HS91L02W2C01",
+  "lcsc_code": "C5248081",
+  "product_url": "https://www.lcsc.com/product-detail/C5248081.html",
+  "datasheet_url": "https://datasheet.lcsc.com/datasheet/pdf/8953314a04a56b0774ba6ab8fe698503.pdf?productCode=C5248081",
+  "module_envelope_mm": [
+    38,
+    12,
+    2.6
+  ],
+  "active_area_mm": [
+    22.384,
+    5.584
+  ],
+  "placement_source": "Body, active rectangle and contacts use U2 coordinates from the supplied KiCad PCB.",
+  "approximations": [
+    "board/panel thickness split",
+    "glass border and placement inside module",
+    "component package locations and sizes",
+    "installed mounting gap"
+  ],
+  "case_opening": "Entire module remains exposed.",
+  "visible_preview_face_mm": [
+    28.8,
+    10.3
+  ],
+  "visible_preview_face_rim_mm": 0.6,
+  "visible_preview_face_note": "Approximate visual glass/polarizer face, not the physical pixel matrix; the exact active area remains 22.384 x 5.584 mm.",
+  "assumed_header_housing_height_mm": 2.5,
+  "screen_shelf": {
+    "target_height_above_main_pcb_mm": 2.25,
+    "height_at_02mm_layers_mm": 2.2,
+    "clearance_below_screen_mm": 0.3,
+    "position": "full 38 mm OLED width along the rear edge, with local relief around headers",
+    "support_length_mm": 38,
+    "underside_slope_degrees_from_print_bed": 30,
+    "minimum_overlap_mm": 1.2,
+    "overlap_at_02mm_layers_mm": 1.88449,
+    "uniform_rim_height_above_main_pcb_mm": 2.2,
+    "header_clearance_mm": 0.5
+  }
+}

@@ -1,0 +1,27 @@
+# Keep current deliverables in Git; ignore intermediate meshes, caches and logs.
+/build/*
+!/build/exports/
+/build/exports/*
+!/build/exports/*.stl
+!/build/exports/*-checks.json
+!/build/exports/frame-section-dimensions.json
+!/build/exports/accessories/
+/build/exports/accessories/*
+!/build/exports/accessories/*.stl
+!/build/previews/
+/build/previews/*
+!/build/previews/*.png
+!/build/board/
+/build/board/*
+!/build/board/*.png
+!/build/board/*.svg
+!/build/print-pack/
+/.venv/
+__pycache__/
+*.py[cod]
+
+# KiCad working files
+*-backups/
+*.lck
+*.kicad_prl
+fp-info-cache
