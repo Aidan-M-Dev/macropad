@@ -1,65 +1,105 @@
 {
   "frames": [
     {
-      "file": "top-frame.stl",
-      "triangles": 4786,
-      "closed_edge_manifold": true,
-      "connected_components": 1,
-      "volume_mm3": 1120.62,
-      "bounds_mm": [
-        [
-          -0.25,
-          -0.25,
-          0.0
-        ],
-        [
-          70.25,
-          60.25,
-          5.0
-        ]
-      ]
-    },
-    {
       "file": "top-frame-reinforced.stl",
-      "triangles": 4770,
+      "triangles": 3106,
       "closed_edge_manifold": true,
       "connected_components": 1,
-      "volume_mm3": 1174.56,
+      "volume_mm3": 873.58,
       "bounds_mm": [
         [
-          -0.25,
-          -0.25,
+          0.4,
+          0.4,
           0.0
         ],
         [
-          70.25,
-          60.25,
-          5.0
+          69.6,
+          59.6,
+          7.0
         ]
+      ],
+      "variant": "frame-reinforced",
+      "opening_mm": [
+        14.0,
+        14.75
+      ],
+      "standoff_height_mm": 6.0,
+      "overall_height_mm": 7.0,
+      "plate_thickness_mm": 1.0,
+      "screw_length_mm": 12,
+      "head_recess_mm": 0,
+      "foot_diameter_mm": 5.0,
+      "foot_bore_mm": 3.4,
+      "foot_wall_mm": 0.8,
+      "mount_pad_diameter_mm": 6.2,
+      "head_bearing_mm": 1.0,
+      "screw_tip_z_mm": 0.8,
+      "nut_engagement_mm": 2.0,
+      "link_width_mm": 2.0,
+      "arm_width_mm": 2.4,
+      "measured_standoffs": [
+        {
+          "centre_mm": [
+            3.5,
+            56.5
+          ],
+          "height_mm": 6.0,
+          "print_z_range_mm": [
+            1.0,
+            7.0
+          ],
+          "outer_diameter_mm": 5.0,
+          "bore_diameter_mm": 3.40001,
+          "wall_thickness_mm": 0.8
+        },
+        {
+          "centre_mm": [
+            66.5,
+            56.5
+          ],
+          "height_mm": 6.0,
+          "print_z_range_mm": [
+            1.0,
+            7.0
+          ],
+          "outer_diameter_mm": 5.00001,
+          "bore_diameter_mm": 3.40002,
+          "wall_thickness_mm": 0.79999
+        },
+        {
+          "centre_mm": [
+            3.5,
+            3.5
+          ],
+          "height_mm": 6.0,
+          "print_z_range_mm": [
+            1.0,
+            7.0
+          ],
+          "outer_diameter_mm": 5.0,
+          "bore_diameter_mm": 3.4,
+          "wall_thickness_mm": 0.8
+        },
+        {
+          "centre_mm": [
+            66.5,
+            3.5
+          ],
+          "height_mm": 6.0,
+          "print_z_range_mm": [
+            1.0,
+            7.0
+          ],
+          "outer_diameter_mm": 5.0,
+          "bore_diameter_mm": 3.40001,
+          "wall_thickness_mm": 0.8
+        }
       ]
     }
   ],
   "separate_washers": 0,
   "clearances": [
     {
-      "variant": "frame",
-      "base_original_screw_mm": 6,
-      "intersection": "electronics",
-      "empty": true
-    },
-    {
-      "variant": "frame",
-      "base_original_screw_mm": 6,
-      "intersection": "base",
-      "empty": true
-    },
-    {
-      "variant": "frame",
-      "base_original_screw_mm": 6,
-      "intersection": "hardware",
-      "empty": true
-    },
-    {
       "variant": "frame-reinforced",
       "base_original_screw_mm": 6,
       "intersection": "electronics",
@@ -78,12 +118,5 @@
       "empty": true
     }
   ],
-  "aperture_mm": 14,
-  "clip_land_mm": 1.6,
-  "screws_by_original_base": {
-    "M3x6": "M3x10"
-  },
-  "head_recess_mm": 0.4,
-  "frame_foot_height_mm": 3.4,
   "physical_clone_clip_and_keycap_fit": "Requires physical fit check; simplified electronics references only"
 }

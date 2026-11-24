@@ -1,47 +1,25 @@
 {
   "fileFormatVersion": "1",
   "parameterSets": {
-    "M3 x 10 mm - minimal frame assembly": {
+    "M3 x 12 mm - reinforced frame assembly": {
       "part": "assembly",
       "screw_length": "6",
-      "with_top_frame": "true",
-      "frame_reinforced": "false"
+      "with_top_frame": "true"
     },
-    "M3 x 10 mm - minimal frame exploded": {
+    "M3 x 12 mm - reinforced frame exploded": {
       "part": "exploded",
       "screw_length": "6",
-      "with_top_frame": "true",
-      "frame_reinforced": "false"
-    },
-    "Minimal frame - print": {
-      "part": "top_frame",
-      "screw_length": "6",
-      "with_top_frame": "true",
-      "frame_reinforced": "false"
-    },
-    "M3 x 10 mm - reinforced frame assembly": {
-      "part": "assembly",
-      "screw_length": "6",
-      "with_top_frame": "true",
-      "frame_reinforced": "true"
-    },
-    "M3 x 10 mm - reinforced frame exploded": {
-      "part": "exploded",
-      "screw_length": "6",
-      "with_top_frame": "true",
-      "frame_reinforced": "true"
+      "with_top_frame": "true"
     },
     "Reinforced frame - print": {
       "part": "top_frame",
       "screw_length": "6",
-      "with_top_frame": "true",
-      "frame_reinforced": "true"
+      "with_top_frame": "true"
     },
     "Compact base - print": {
       "part": "base",
       "screw_length": "6",
-      "with_top_frame": "true",
-      "frame_reinforced": "false"
+      "with_top_frame": "true"
     }
   }
 }

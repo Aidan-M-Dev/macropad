@@ -34,15 +34,16 @@ def section_mask(mesh, plane_y, xs, zs):
 
 fig, axes = plt.subplots(1, 1, figsize=(12, 9), facecolor='#121923')
 measurements = []
+fit=next(row for row in json.loads((BUILD/'exports/top-frame-checks.json').read_text())['frames'] if row['file']=='top-frame-reinforced.stl')
 for length, ax in [(6, axes)]:
-    actual_length = length+4
+    actual_length = fit['screw_length_mm']
     log = (BUILD/f'exports/logs/m3x{length}-base-m3x{length}.log').read_text()
     pcb_top = float(re.search(r'\bpcb_top = ([\d.]+)', log).group(1))
-    seat = pcb_top+4.6
+    seat = pcb_top+fit['overall_height_mm']-fit['head_recess_mm']
     top = seat+3
     xs, zs = np.linspace(-5, 5, 700), np.linspace(-.2, top+.4, 1400)
     refs = BUILD/f'previews/meshes/m3x{length}'
-    frame_refs = BUILD/f'previews/meshes/frame-base{length}'
+    frame_refs = BUILD/f'previews/meshes/frame-reinforced-base{length}'
     parts = [
         ('base', BUILD/f'exports/base-m3x{length}.stl', '#466981'),
         ('pcb', refs/'pcb.stl', '#27956e'),
@@ -64,30 +65,34 @@ for length, ax in [(6, axes)]:
     def inside(name, x, z):
         return bool(masks[name][np.argmin(abs(zs-z)), np.argmin(abs(xs-x))])
 
-    # Verify the new bearing interface and actual recessed seat in the section.
+    # Verify flat head contact and constant wall thickness down the straight foot.
     assert inside('frame', 2, pcb_top+.1) and not inside('frame', 2, pcb_top-.1)
     assert inside('pcb', 2, pcb_top-.1)
     assert inside('frame', 2, seat-.1) and not inside('frame', 2, seat+.1)
-    assert inside('frame', 3.2, seat+.2) and inside('screw', 2, seat+.1)
+    assert not inside('frame', 3.2, seat+.2) and inside('screw', 2, seat+.1)
     assert not inside('frame', 0, pcb_top+1), 'Screw clearance bore must be open'
+    for height in (.1,fit['standoff_height_mm']/2,fit['standoff_height_mm']-.1):
+        assert inside('frame',2.3,pcb_top+height) and not inside('frame',2.65,pcb_top+height), 'Standoff must have straight 0.8 mm walls throughout'
+    tip=fit['screw_tip_z_mm']
+    engagement=fit['nut_engagement_mm']
 
     ax.set_facecolor('#121923')
     ax.set_aspect('equal')
     ax.axis('off')
-    ax.set_title(f'Compact base: M3 × {actual_length} mm',
+    ax.set_title(f'Reinforced frame: M3 × {actual_length} mm',
                  color='#f1f4f6', fontsize=17, pad=18)
-    ax.annotate('', xy=(-5.6, seat), xytext=(-5.6, .4),
+    ax.annotate('', xy=(-5.6, seat), xytext=(-5.6, tip),
                 arrowprops=dict(arrowstyle='<->', color='#dce6ee', lw=1.2))
-    ax.text(-6.1, (seat+.4)/2, f'{actual_length} mm under-head length', color='#dce6ee',
+    ax.text(-6.1, (seat+tip)/2, f'{actual_length} mm under-head length', color='#dce6ee',
             rotation=90, ha='right', va='center', fontsize=11)
     labels = [
         (seat+1.5, f'M3 × {actual_length} socket-cap screw\nHead: Ø5.5 × 3 mm'),
-        (seat+.2, '0.4 mm recessed head seat\n1.2 mm frame bearing below seat'),
-        (pcb_top+1.7, 'Integral frame foot: 3.4 mm\nDirect PCB contact; no washers'),
+        (seat, f'Flat head seat; no recess\n{fit["head_bearing_mm"]:g} mm plate, Ø{fit["mount_pad_diameter_mm"]:g} mm screw pad'),
+        (pcb_top+fit['standoff_height_mm']/2, f'Integral foot: {fit["standoff_height_mm"]:g} mm tall; straight {fit["foot_wall_mm"]:g} mm walls\nØ{fit["foot_diameter_mm"]:g} mm outside, Ø{fit["foot_bore_mm"]:g} mm bore\nDirect PCB contact; no washers'),
         (pcb_top-.8, 'PCB: 1.6 mm'),
         ((pcb_top-1.6)/2, f'Existing printed base\nComponent clearance: {length-2.2:g} mm'),
-        (1.6, 'M3 nut: 2.4 mm thick\nFull 2.4 mm thread engagement'),
-        (.4, 'Screw tip and nut bottom\n0.4 mm above the exterior underside'),
+        (1.6, f'M3 nut: 2.4 mm thick\n{engagement:g} mm thread engagement'),
+        (tip, f'Screw tip: {tip:g} mm above exterior underside\nNut bottom: 0.4 mm above underside'),
     ]
     positions = []
     previous_y, previous_h = None, 0
@@ -101,12 +106,15 @@ for length, ax in [(6, axes)]:
     ax.set_xlim(-8, 24)
     ax.set_ylim(min(-4, previous_y-1.5), top+1.0)
     measurements.append({'original_base_screw_mm': length, 'actual_screw_mm': actual_length,
-                         'frame_foot_height_mm': 3.4, 'head_recess_mm': .4,
-                         'separate_washers': 0, 'screw_tip_z_mm': .4, 'nut_engagement_mm': 2.4,
+                         'frame_foot_height_mm': fit['standoff_height_mm'], 'head_recess_mm': fit['head_recess_mm'],
+                         'opening_mm': fit['opening_mm'], 'frame_foot_diameter_mm': fit['foot_diameter_mm'],
+                         'frame_foot_wall_mm': fit['foot_wall_mm'], 'frame_foot_bore_mm': fit['foot_bore_mm'],
+                         'plate_thickness_mm': fit['plate_thickness_mm'],
+                         'separate_washers': 0, 'screw_tip_z_mm': tip, 'nut_engagement_mm': engagement,
                          'actual_mesh_bearing_and_recess_verified': True, 'annotations': positions})
 
 fig.suptitle('Retaining frame — section through a mounting screw', color='#f1f4f6', fontsize=18, y=.97)
-fig.text(.5, .91, 'Both frame versions use this stack.  MX plate top: 5.0 mm above PCB; switch collar thickness: 1.6 mm.',
+fig.text(.5, .91, 'Reinforced frame: 14.0 × 14.75 mm openings; 6 mm standoffs; flat 1 mm plate; 2 mm links; 2.4 mm arms.',
          ha='center', color='#c7d2dc', fontsize=10)
 fig.text(.5, .04, 'Orange: retaining frame     Blue: existing base     Green: PCB     Silver: screw and nut\n'
          'Sections are cut from exported STL geometry. Screw lengths are measured below the head.',
@@ -115,4 +123,4 @@ fig.subplots_adjust(top=.84, bottom=.10, left=.02, right=.98, wspace=.1)
 fig.savefig(BUILD/'previews/frame-cross-section.png', dpi=180, facecolor=fig.get_facecolor())
 plt.close(fig)
 (BUILD/'exports/frame-section-dimensions.json').write_text(json.dumps(measurements, indent=2)+'\n')
-print('Washer-free sections from actual meshes: M3 × 10; bearing contact and head recess PASS.')
+print('Reinforced frame section: M3 × 12; 6 mm straight standoffs, 0.8 mm walls and flat bearing contact PASS.')

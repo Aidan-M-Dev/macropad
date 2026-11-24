@@ -23,7 +23,7 @@ for name,params,expect in [
     ('underside-clearance',['underside_clearance=4'],'Insufficient underside clearance'),
     ('rim-no-protection',['rim_above_pcb_top=0'],'Rim must protect PCB edge'),
     ('rim-keycap',['rim_above_pcb_top=3'],'Rim reaches pressed keycap'),
-    ('rim-below-shelf',['rim_above_pcb_top=1'],'Rim must match screen shelf height'),
+    ('rim-below-shelf',['rim_above_pcb_top=1','usb_top_reduction=0'],'Rim must match screen shelf height'),
     ('tall-rib',['rib_enabled=true','rib_height_layers=20'],'Insufficient underside clearance'),
     ('thin-skin',['bottom_layers=1'],'at least two walls/skin layers'),
     ('thin-roof',['nut_roof_height=0.6'],'Insufficient bearing above nut pocket'),
@@ -36,6 +36,9 @@ for name,params,expect in [
     ('deep-usb',['usb_body_height=4'],'USB opening cuts through bottom skin'),
     ('thin-usb-bridge',['usb_bridge_layers=1'],'USB bridge needs at least two layers'),
     ('blocked-usb',['usb_bridge_layers=20'],'Insufficient clearance above USB connector'),
+    ('usb-overcropped',['usb_top_reduction=3.2'],'Insufficient clearance above USB connector'),
+    ('usb-negative-crop',['usb_top_reduction=-0.2'],'USB top reduction must be nonnegative'),
+    ('usb-fractional-crop',['usb_top_reduction=2.9'],'USB top reduction must be nonnegative'),
     ('socket-through-head',['socket_depth=3'],'Invalid hex socket'),
     ('fine-layers',['layer_height=0.1'],None),
     ('shelf-too-high',['screen_shelf_height=2.5'],'clearance below screen'),
@@ -45,11 +48,22 @@ for name,params,expect in [
     ('shelf-on-pcb',['screen_shelf_board_clearance=0'],'main PCB clear'),
     ('shelf-steep-overhang',['screen_shelf_overlap=4'],'overhang exceeds'),
     ('header-too-short',['screen_mount_gap=2'],'clearance below screen'),
+    ('frame-opening-too-wide-x',['frame_opening=[15.1,14.75]'],'Opening outside the prototype-fit range'),
+    ('frame-opening-too-wide-y',['frame_opening=[14.0,15.1]'],'Opening outside the prototype-fit range'),
+    ('frame-unsupported-seat',['frame_mount_d=5'],'Mount pad must support the whole screw head'),
+    ('frame-thin-standoff',['frame_foot_wall=0.6'],'Standoffs need at least two extrusion lines'),
+    ('frame-unsupported-head',['frame_foot_d=4.4'],'Excessive head bearing overhang'),
+    ('frame-screws-too-short',['frame_screw_extra=4'],'Frame screws must engage the nuts'),
+    ('frame-screws-too-long',['frame_screw_extra=8'],'Frame screws must engage the nuts'),
+    ('frame-plate-too-thin',['frame_thickness=0.8'],'Invalid frame thickness'),
+    ('frame-links-too-narrow',['frame_link_width=1.2'],'Reinforced links need at least five extrusion lines'),
+    ('frame-arms-too-narrow',['frame_arm_width=1.6'],'Reinforced arms need at least six extrusion lines'),
 ]:compile_case(name,params,expect)
 for mode in ['assembly','exploded','section','print','washer_set','nut_fit_test']:
     compile_case(mode,[f'part="{mode}"'])
 for length in [6]:
     compile_case(f'base-wrapper-{length}',source=ROOT/f'base-m3x{length}.scad')
+compile_case('reinforced-frame-wrapper',source=ROOT/'top-frame-reinforced.scad')
 compile_case('nut-test-wrapper',source=ACCESSORIES/'nut-fit-test-m3.scad')
 compile_case('washer-wrapper',source=ACCESSORIES/'washers-0.6mm.scad')
 def arr(log,name):return json.loads(re.search(r'\b'+name+r' = (\[[^\]]+\])',log).group(1))
@@ -67,8 +81,9 @@ for length in [6]:
     assert np.isclose(float(re.search(r'\brim_above_pcb_top = ([\d.]+)',log).group(1)),2.2)
     assert np.allclose(arr(log,'washer'),[5,3.4,.6])
     assert np.allclose(arr(log,'nut_roof_taper'),[1.4,.25,5.2])
-    assert np.allclose(arr(log,'usb_opening'),[10.4,6.8,length-5.6])
-    assert np.allclose(arr(log,'usb_bridge'),[.8,length+1.2,length+2])
+    assert np.allclose(arr(log,'usb_opening'),[10.4,3.8,length-5.6])
+    assert np.allclose(arr(log,'usb_bridge'),[3.8,length-1.8,length+2])
+    assert np.allclose(arr(log,'usb_top_crop'),[3.0,0.0])
     assert np.allclose(arr(log,'print_dimensions'),[.4,.2,.8,.4,0,0])
     assert np.allclose(arr(log,'fastener_walls'),[.8,.8,.8])
     space=float(re.search(r'underside_space = ([\d.]+)',log).group(1))

@@ -91,9 +91,15 @@ for length in [6]:
     # Cast a vertical ray through the port centre to measure the actual roof.
     vertical=mesh[:,:,[2,0,1]]
     roof=crossings(vertical,44.75,60.7)[-2:]
-    assert np.allclose(roof,[length+1.2,length+2],atol=2e-5),(length,'USB bridge',roof)
-    assert not inside(rotated,[60.7,44.75],length+1.15)
-    assert inside(rotated,[60.7,44.75],length+1.25)
+    assert np.allclose(roof,[length-1.8,length+2],atol=2e-5),(length,'USB bridge',roof)
+    assert np.isclose((length+1.2)-roof[0],3.0), 'USB ceiling must be exactly 3 mm lower'
+    # The bottom stays at Z=0.4. The lowered ceiling is square across its width,
+    # preserving connector clearance at the upper corners as well as the centre.
+    floor_top=crossings(vertical,44.75,60.7)[1]
+    assert np.isclose(floor_top,length-5.6,atol=2e-5),('USB bottom moved',floor_top)
+    for dx in [-5.1,0,5.1]:
+        assert not inside(rotated,[60.7,44.75+dx],pcb_bottom-.05)
+        assert inside(rotated,[60.7,44.75+dx],pcb_bottom+.05)
 # Measure the level rim and full-screen-width shelf, including slope and header relief.
 for length in [6]:
     mesh=load(BUILD/f'exports/base-m3x{length}.stl');pcb_top=length-.2
@@ -139,6 +145,9 @@ assert np.allclose(coupon.reshape(-1,3).min(0),[0,0,0])
 assert np.allclose(coupon.reshape(-1,3).max(0),[66,16,4.2])
 results.append({'file':'nut-fit-test-m3.stl','pocket_af_sizes_mm':[5.45,5.5,5.6,5.7,5.8,5.85],'same_pocket_walls_leadin_and_roof_as_case':True})
 results.append({'file':'washers-0.6mm.stl','washer_height_mm':.6,'washer_count':4,'on_print_bed':True})
-results.append({'usb_opening_width_mm':10.4,'usb_opening_height_mm':6.8,'usb_bridge_thickness_mm':.8,'under_board_connector_clearance_verified':True,'continuous_usb_roof_measured_in_compact_base':True})
+results.append({'usb_opening_width_mm':10.4,'usb_opening_height_mm':3.8,'usb_opening_bottom_z_mm':.4,
+                'usb_opening_top_z_mm':4.2,'usb_top_reduction_mm':3.0,'usb_bridge_thickness_mm':3.8,
+                'nominal_clearance_above_connector_mm':0.0,'flat_upper_corners_verified':True,
+                'under_board_connector_clearance_verified':True,'continuous_usb_roof_measured_in_compact_base':True})
 (BUILD/'exports/print-geometry-checks.json').write_text(json.dumps(results,indent=2)+'\n')
 print('Compact base, screen shelf, M3 nut-fit coupon and 0.6 mm washers verified from actual STL sections.')

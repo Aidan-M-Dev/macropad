@@ -182,20 +182,30 @@ for i in range(6):
         same_design=canvases[i]==canvases[j] and preview.FACES[i]['width_mm']==preview.FACES[j]['width_mm']
         assert (manifest['keys'][i]['artwork_png']==manifest['keys'][j]['artwork_png'])==same_design
 png_names={p.name for p in (BUILD/'previews').glob('*.png')}
-canonical={'top-frame-assembly.png','top-frame-without-keycaps.png','top-frame-exploded.png',
-           'top-frame-top.png','top-frame-print.png','top-frame-comparison.png','frame-cross-section.png',
+canonical={'frame-cross-section.png',
            'top-frame-reinforced-assembly.png','top-frame-reinforced-without-keycaps.png',
            'top-frame-reinforced-top.png','top-frame-reinforced-print.png','top-frame-reinforced-exploded.png'}
 assert canonical<=png_names
 assert png_names == canonical, ('Superseded renders remain', png_names-canonical)
+frame_report=json.loads((BUILD/'exports/top-frame-checks.json').read_text())
+assert len(frame_report['frames'])==1 and frame_report['frames'][0]['file']=='top-frame-reinforced.stl'
+assert frame_report['frames'][0]['link_width_mm']==2 and frame_report['frames'][0]['arm_width_mm']==2.4
+assert len(frame_report['frames'][0]['measured_standoffs'])==4
+assert all(abs(post['height_mm']-6)<.00002 for post in frame_report['frames'][0]['measured_standoffs'])
+assert all(abs(post['wall_thickness_mm']-.8)<.00002 for post in frame_report['frames'][0]['measured_standoffs'])
 sections=json.loads((BUILD/'exports/frame-section-dimensions.json').read_text())
-assert len(sections)==1 and sections[0]['actual_screw_mm']==10
+assert len(sections)==1 and sections[0]['actual_screw_mm']==12
+assert sections[0]['frame_foot_height_mm']==6 and sections[0]['opening_mm']==[14.0,14.75]
+assert sections[0]['plate_thickness_mm']==1.0
+assert sections[0]['head_recess_mm']==0 and sections[0]['nut_engagement_mm']==2.0
+assert sections[0]['frame_foot_wall_mm']==.8 and sections[0]['frame_foot_diameter_mm']==5.0
 for section in sections:
     positions=section['annotations']
-    assert section['separate_washers']==0 and section['actual_screw_mm']==section['original_base_screw_mm']+4
+    assert section['separate_washers']==0 and section['actual_screw_mm']==section['original_base_screw_mm']+6
     assert any('no washers' in x['label'] for x in positions)
     for a,b in zip(positions,positions[1:]):
         assert a['label_y']-b['label_y'] >= .26*(len(a['label'].split('\n'))+len(b['label'].split('\n')))+.35-1e-6
-results.append({'vendor_pack_matches_configured_artwork':True,'identical_artwork_deduplicated':True,'both_frame_version_views_present':True,'section_annotation_spacing':True})
+assert not (BUILD/'exports/top-frame.stl').exists(), 'Removed original frame export remains'
+results.append({'vendor_pack_matches_configured_artwork':True,'identical_artwork_deduplicated':True,'reinforced_frame_views_present':True,'section_annotation_spacing':True})
 (BUILD/'exports/appearance-checks.json').write_text(json.dumps(results,indent=2)+'\n')
 print(f'{len(results)} appearance, artwork, print-pack and annotation checks passed.')

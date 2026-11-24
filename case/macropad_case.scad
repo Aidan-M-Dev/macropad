@@ -47,7 +47,7 @@ washer_d = 5.0;
 
 /* [M3 hex-socket screws] */
 // Under-head length. Case height follows this length; the tip stays recessed.
-screw_length = 6; // Original compact-base datum; with frame the actual screw is M3x10.
+screw_length = 6; // Original compact-base datum; the reinforced frame uses M3x12.
 screw_clearance_d = 3.4;
 screw_nominal_d = 3.0;
 head_d = 5.5;
@@ -118,8 +118,9 @@ usb_body_height = 3.5;
 usb_opening_width = 10.4;
 usb_bottom_clearance = 0.3;
 usb_corner_radius = 0.5;
-// Four layers form a continuous bridge level with the surrounding rear rim.
+// Initial roof thickness before filling the top 3 mm of the original port.
 usb_bridge_layers = 4;
+usb_top_reduction = 3.0;
 usb_x_offset = 0;
 
 /* [Hidden] */
@@ -159,8 +160,9 @@ top_screw_length = screw_length;
 top_screw_tip = pcb_top+top_screw_land-top_screw_length;
 top_engagement = min(nut_height,nut_pocket_top-top_screw_tip);
 usb_opening_bottom = pcb_bottom-usb_body_height-usb_bottom_clearance;
-usb_bridge_height = usb_bridge_layers*layer_height;
-usb_opening_top = case_top-usb_bridge_height;
+usb_original_opening_top = case_top-usb_bridge_layers*layer_height;
+usb_opening_top = usb_original_opening_top-usb_top_reduction;
+usb_bridge_height = case_top-usb_opening_top;
 usb_opening_height = usb_opening_top-usb_opening_bottom;
 screen_body = [pcb_oled_body_bounds[0]+screen_offset_x,pcb_oled_body_bounds[1]+screen_offset_y,pcb_oled_body_bounds[2]+screen_offset_x,pcb_oled_body_bounds[3]+screen_offset_y];
 screen_view = [pcb_oled_view_bounds[0]+screen_offset_x,pcb_oled_view_bounds[1]+screen_offset_y,pcb_oled_view_bounds[2]+screen_offset_x,pcb_oled_view_bounds[3]+screen_offset_y];
@@ -211,7 +213,10 @@ assert(top_screw_tip>=-0.000001 && top_screw_tip<=nut_pocket_top-nut_height+0.00
 assert(usb_opening_width>=usb_body_width+0.4 && usb_bottom_clearance>=0.2,"Insufficient USB opening clearance");
 assert(usb_opening_bottom>=base_skin-0.000001,"USB opening cuts through bottom skin");
 assert(usb_bridge_layers>=2,"USB bridge needs at least two layers");
-assert(usb_opening_top>=pcb_bottom+usb_bottom_clearance-0.000001,"Insufficient clearance above USB connector");
+assert(usb_top_reduction>=0 && abs(usb_top_reduction/layer_height-round(usb_top_reduction/layer_height))<0.001,
+       "USB top reduction must be nonnegative and use whole print layers");
+// The requested 3 mm crop puts the roof at the nominal connector top.
+assert(usb_opening_top>=pcb_bottom-0.000001,"Insufficient clearance above USB connector");
 assert(usb_opening_height>2*usb_corner_radius && usb_opening_width>2*usb_corner_radius);
 
 assert(screen_shelf_top<=pcb_top+screen_mount_gap-0.2+0.000001,"Shelf needs at least 0.2 mm clearance below screen");
@@ -237,6 +242,7 @@ echo(washer=[washer_outer_d,screw_clearance_d,top_screw_land]);
 echo(underside_space=pcb_bottom-rib_top,required_underside_space=underside_clearance);
 echo(usb_opening=[usb_opening_width,usb_opening_height,usb_opening_bottom],usb_body=[usb_body_width,usb_body_height]);
 echo(usb_bridge=[usb_bridge_height,usb_opening_top,case_top]);
+echo(usb_top_crop=[usb_top_reduction,usb_opening_top-pcb_bottom]);
 
 echo(screen_shelf=[screen_shelf_top-pcb_top,screen_mount_gap,pcb_top+screen_mount_gap-screen_shelf_top,screen_shelf_width,screen_shelf_actual_overlap]);
 echo(screen_shelf_bounds=[screen_shelf_x,screen_shelf_front,screen_shelf_end,screen_shelf_back,screen_shelf_top]);
@@ -285,10 +291,14 @@ module bounds_prism(b,clear,z,h,r=0.4) {
         linear_extrude(height=h) rr2(b[2]-b[0]+2*clear,b[3]-b[1]+2*clear,r);
 }
 module cable_cut() {
-    // Rounded port beneath a continuous bridge across the rear wall.
+    // Crop the old rounded port from above: retain its bottom and lower corners,
+    // but make the lowered ceiling flat so it clears the full connector width.
     translate([pcb_usb_centre[0]+usb_x_offset-usb_opening_width/2,d+pad+eps,usb_opening_bottom])
         rotate([90,0,0]) linear_extrude(height=2*pad+5)
-            rr2(usb_opening_width,usb_opening_height,usb_corner_radius);
+            intersection() {
+                rr2(usb_opening_width,usb_original_opening_top-usb_opening_bottom,usb_corner_radius);
+                square([usb_opening_width,usb_opening_height]);
+            }
 }
 module floor_network() {
     if(rib_enabled) translate([0,0,base_skin-eps])
@@ -536,9 +546,9 @@ else if(part=="check_frame_electronics") intersection() {
 else if(part=="check_frame_base") intersection() {top_frame();base();}
 else if(part=="check_frame_hardware") intersection() {
     top_frame();
-    // Bearing contact at the recessed head seat is intentional.
+    // Bearing contact at the flat top face is intentional.
     for(p=pcb_mount_holes) translate([p[0],p[1],0]) {
-        translate([0,0,top_screw_tip+eps])
+        translate([0,0,frame_screw_tip+eps])
             cylinder(d=screw_nominal_d,h=screw_length+frame_screw_extra-2*eps);
         translate([0,0,pcb_top+frame_screw_land+eps]) cylinder(d=head_d,h=head_h-2*eps);
     }
@@ -596,6 +606,14 @@ else if(part=="check_screen_insertion") intersection() {
 else if(part=="check_screen") intersection() {shells();union() {screen_keepout();screen();}}
 else if(part=="check_keys") intersection() {shells();key_keepout();}
 else if(part=="check_underside") intersection() {shells();underside_keepout();}
-else if(part=="check_usb") intersection() {shells();usb_proxy();}
+else if(part=="check_usb") intersection() {
+    shells();
+    // The cropped roof meets the nominal connector top. Ignore that intentional
+    // bearing face (and CSG rounding there), as at the PCB/support interfaces.
+    intersection() {
+        usb_proxy();
+        translate([-1,-1,-1]) cube([w+2,d+2,pcb_bottom+1-eps]);
+    }
+}
 else if(part=="check_fasteners") intersection() {shells();fastener_keepout();}
 else {assert(part=="assembly","Unknown part");assembly();}

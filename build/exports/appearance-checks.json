@@ -30,7 +30,7 @@
   {
     "vendor_pack_matches_configured_artwork": true,
     "identical_artwork_deduplicated": true,
-    "both_frame_version_views_present": true,
+    "reinforced_frame_views_present": true,
     "section_annotation_spacing": true
   }
 ]

@@ -2,21 +2,21 @@
 
 The existing compact printed base with four M3 through-screws and four underside M3 nuts accepts the retaining frame. PCB: **70 × 60 × 1.6 mm**, mounting holes on **63 × 53 mm** spacing.
 
-**Current retaining top:** the [skeletal switch frame](TOP-FRAME.md) attaches to those same four mounts, with keycaps above it and the OLED exposed. It uses four M3 × 10 mm screws with no separate washers. The existing compact base remains usable as printed. The tall version has been retired. See the guide for installation and the new cross-section. The base-only washer stack below is retained as a reference for use without the frame.
+**Current retaining top:** the [reinforced switch frame](TOP-FRAME.md) attaches to those same four mounts, with keycaps above it and the OLED exposed. The only frame has 14.0 × 14.75 mm slots (left/right × top/bottom), 6 mm straight standoffs with 0.8 mm walls, a flat 1 mm plate, 2 mm links, 2.4 mm mounting arms and M3 × 12 mm screws. The top has no screw-head recesses. No separate washers are needed. Earlier base prints still fit the frame; reprint the updated base to get the smaller USB opening. The tall version has been retired. See the guide for installation and the new cross-section. The base-only washer stack below is retained as a reference for use without the frame.
 
 | Base-only screws, without frame (under-head length) | Printable base | Overall case size | PCB-to-floor space |
 | --- | --- | --- | --- |
 | Four M3 × 6 mm — shortest reasonable even length | [base-m3x6.stl](../build/exports/base-m3x6.stl) | 72.3 × 62.3 × 8.0 mm | 3.8 mm |
 
-All four walls and the screen shelf finish at the same height: **8.0 mm** overall, or **2.2 mm above the PCB**. A **0.8 mm bridge** closes the top of the USB opening, level with the rear rim.
+All four walls and the screen shelf finish at the same height: **8.0 mm** overall, or **2.2 mm above the PCB**. A **3.8 mm roof** closes the top of the reduced USB opening, level with the rear rim.
 
 For the base-only setup without a frame, print one base and [four washers together](../build/exports/accessories/washers-0.6mm.stl), or print four copies of [the single washer](../build/exports/accessories/washer-0.6mm.stl). Washers are **5 mm OD × 3.4 mm bore × 0.6 mm tall**. All printable meshes lie on Z=0; no hardware or electronic reference meshes belong on the print plate.
 
 ## Prototype changes
 
-The USB-C body is modelled **entirely beneath the PCB**, **9.8 mm wide × 3.5 mm tall below its underside**. “3.5 mm deep” is interpreted as its vertical projection below the board. Its XY position still comes from J1. The rounded port is **10.4 mm wide × 6.8 mm high**, with **0.3 mm clearance below the connector**. Its **0.8 mm roof** is four default print layers and finishes level with the rim. The opening runs from Z=0.4 to 7.2 mm on the compact version. `usb_bridge_layers` controls the roof thickness. The USB body remains a fit reference; cable-overmould dimensions were not supplied.
+The USB-C body is modelled **entirely beneath the PCB**, **9.8 mm wide × 3.5 mm tall below its underside**. “3.5 mm deep” is interpreted as its vertical projection below the board. Its XY position still comes from J1. The port is **10.4 mm wide × 3.8 mm high**, with **0.3 mm clearance below the connector**. The top has been lowered by **exactly 3 mm**, from Z=7.2 to Z=4.2; the bottom remains at Z=0.4. The new upper edge is flat, retaining the old lower rounded corners. This preserves the full connector width at the ceiling, with **zero nominal clearance above the modelled connector**. The roof is now **3.8 mm thick**, finishing at the unchanged rim. `usb_top_reduction=3` sets the crop, added to the original `usb_bridge_layers=4` roof at 0.2 mm layers. The USB body remains a fit reference; check the actual plug fit because cable-overmould dimensions were not supplied.
 
-The required bottom component envelope is now **3.5 mm** from the PCB underside. The compact version provides **3.8 mm above the inside floor**, with the extra 0.3 mm coming from the screw/nut stack. The frame assembly keeps full **2.4 mm nut engagement**, and both screw tips and nut bottoms are **0.4 mm above the exterior underside**.
+The required bottom component envelope is now **3.5 mm** from the PCB underside. The compact version provides **3.8 mm above the inside floor**, with the extra 0.3 mm coming from the base-only screw/nut stack. The flat-top frame assembly gives **2.0 mm nut engagement** with M3 × 12 mm screws; screw tips are **0.8 mm above the exterior underside** and nut bottoms remain **0.4 mm above it**. Without the frame, M3 × 6 mm screws give full 2.4 mm engagement and 0.4 mm tip recess.
 
 Nut pockets are **5.70 mm across flats**, enlarged after the final 5.60 mm case pockets were too tight despite the coupon fit. With nominal 5.5 mm M3 nuts this gives **0.20 mm total clearance**, plus the existing 0.25 mm entry lead-in on each side. This fit is retained in the selected compact base. `nut_fit_allowance` is total across-flats allowance, not per side.
 
@@ -54,11 +54,11 @@ Hardware assumptions: regular M3 nuts **5.5 mm AF × 2.4 mm thick**; socket-cap 
 
 ## Source and renders
 
-- [base-m3x6.scad](base-m3x6.scad): existing compact printable-base entry point; use M3 × 10 mm screws with its frame.
+- [base-m3x6.scad](base-m3x6.scad): existing compact printable-base entry point; use M3 × 12 mm with the reinforced frame.
 - [../accessories/](../accessories/README.md): washer and nut-fit tester entry points and shared accessory modules.
-- [macropad_case.scad](macropad_case.scad): shared parameterised model. `screw_length=6` retains the original compact-base datum; `with_top_frame=true` uses actual M3 × 10 mm screws; `part` selects assembly, exploded, section, print, base, washer, washer_set or nut_fit_test. OpenSCAD presets are in `macropad_case.json`.
+- [macropad_case.scad](macropad_case.scad): shared parameterised model. `screw_length=6` retains the original compact-base datum; `with_top_frame=true` uses M3 × 12 mm for the reinforced frame; `part` selects assembly, exploded, section, print, base, washer, washer_set or nut_fit_test. OpenSCAD presets are in `macropad_case.json`.
 
-[Current frame views, both versions and cross-section](TOP-FRAME.md).
+[Reinforced frame views and cross-section](TOP-FRAME.md).
 
 Colours, keycap artwork and opacity remain controlled by `../appearance/config.json`; see [APPEARANCE.md](APPEARANCE.md). PCB silkscreen is extracted from the existing KiCad board; these renders are visual references, not fabrication output. Keycaps and electronics are simplified references.
 
@@ -75,6 +75,6 @@ make check     # Refreshes previews and runs the full checks
 
 The Makefile handles dependencies, including extracting the PCB geometry when the KiCad board changes. Colour/artwork edits reuse meshes. Generated CAD inputs are in `../build/generated/`; edit the board or `../appearance/config.json` instead. Generated STLs, reports and logs are in `../build/exports/`, images in `../build/previews/`, and supplier artwork in `../build/print-pack/`.
 
-`make build` checks exact empty CSG intersections for the PCB, washers, screen (including its header housings), screen/PCB insertion, key travel, underside USB, the 3.5 mm component envelope, fasteners and hardware against electronics. `make check` also validates parameter assertions, measured STL sections, manifold geometry, artwork and annotation layout.
+`make build` checks empty CSG intersections, excluding intentional bearing-face contact, for the PCB, washers, screen (including its header housings), screen/PCB insertion, key travel, underside USB, the 3.5 mm component envelope, fasteners and hardware against electronics. `make check` also validates parameter assertions, measured STL sections, manifold geometry, artwork and annotation layout.
 
-Run `make top-frame` to rebuild both frame variants, their current assembly renders and the dimensioned cross-section. Superseded base-only renders have been removed. See the [root guide](../README.md) for setup and the full folder layout.
+Run `make top-frame` to rebuild the reinforced frame, their current assembly renders and the dimensioned cross-section. Superseded base-only renders have been removed. See the [root guide](../README.md) for setup and the full folder layout.

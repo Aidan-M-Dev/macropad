@@ -42,7 +42,7 @@ For the normal template workflow, leave image sizes, centres and rotations as su
 
 ## Send it back
 
-Return this whole folder, including `config.json` and the images. The developer runs **`make preview`** from the repository root to apply the colours and artwork to both frame versions, refresh the PCB front/back preview, and export artwork into `build/print-pack/`. `make templates` regenerates the guides if the PCB layout changes.
+Return this whole folder, including `config.json` and the images. The developer runs **`make preview`** from the repository root to apply the colours and artwork to the reinforced frame, refresh the PCB front/back preview, and export artwork into `build/print-pack/`. `make templates` regenerates the guides if the PCB layout changes.
 
 The developer can run `python3 tools/package_appearance.py` to bundle this folder into `build/appearance-handoff.zip` for sharing.
 

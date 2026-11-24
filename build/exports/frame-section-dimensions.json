@@ -1,28 +1,36 @@
 [
   {
     "original_base_screw_mm": 6,
-    "actual_screw_mm": 10,
-    "frame_foot_height_mm": 3.4,
-    "head_recess_mm": 0.4,
+    "actual_screw_mm": 12,
+    "frame_foot_height_mm": 6.0,
+    "head_recess_mm": 0,
+    "opening_mm": [
+      14.0,
+      14.75
+    ],
+    "frame_foot_diameter_mm": 5.0,
+    "frame_foot_wall_mm": 0.8,
+    "frame_foot_bore_mm": 3.4,
+    "plate_thickness_mm": 1.0,
     "separate_washers": 0,
-    "screw_tip_z_mm": 0.4,
-    "nut_engagement_mm": 2.4,
+    "screw_tip_z_mm": 0.8,
+    "nut_engagement_mm": 2.0,
     "actual_mesh_bearing_and_recess_verified": true,
     "annotations": [
       {
-        "anchor_y": 11.899999999999999,
-        "label_y": 11.899999999999999,
-        "label": "M3 \u00d7 10 socket-cap screw\nHead: \u00d85.5 \u00d7 3 mm"
+        "anchor_y": 14.3,
+        "label_y": 14.3,
+        "label": "M3 \u00d7 12 socket-cap screw\nHead: \u00d85.5 \u00d7 3 mm"
       },
       {
-        "anchor_y": 10.599999999999998,
-        "label_y": 10.25,
-        "label": "0.4 mm recessed head seat\n1.2 mm frame bearing below seat"
+        "anchor_y": 12.8,
+        "label_y": 12.650000000000002,
+        "label": "Flat head seat; no recess\n1 mm plate, \u00d86.2 mm screw pad"
       },
       {
-        "anchor_y": 7.5,
-        "label_y": 7.5,
-        "label": "Integral frame foot: 3.4 mm\nDirect PCB contact; no washers"
+        "anchor_y": 8.8,
+        "label_y": 8.8,
+        "label": "Integral foot: 6 mm tall; straight 0.8 mm walls\n\u00d85 mm outside, \u00d83.4 mm bore\nDirect PCB contact; no washers"
       },
       {
         "anchor_y": 5.0,
@@ -37,12 +45,12 @@
       {
         "anchor_y": 1.6,
         "label_y": 0.4499999999999997,
-        "label": "M3 nut: 2.4 mm thick\nFull 2.4 mm thread engagement"
+        "label": "M3 nut: 2.4 mm thick\n2 mm thread engagement"
       },
       {
-        "anchor_y": 0.4,
+        "anchor_y": 0.8,
         "label_y": -1.2000000000000002,
-        "label": "Screw tip and nut bottom\n0.4 mm above the exterior underside"
+        "label": "Screw tip: 0.8 mm above exterior underside\nNut bottom: 0.4 mm above underside"
       }
     ]
   }

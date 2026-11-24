@@ -100,6 +100,21 @@
     "passed": true
   },
   {
+    "case": "usb-overcropped",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "usb-negative-crop",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "usb-fractional-crop",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
     "case": "socket-through-head",
     "expected": "rejected",
     "passed": true
@@ -145,6 +160,56 @@
     "passed": true
   },
   {
+    "case": "frame-opening-too-wide-x",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "frame-opening-too-wide-y",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "frame-unsupported-seat",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "frame-thin-standoff",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "frame-unsupported-head",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "frame-screws-too-short",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "frame-screws-too-long",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "frame-plate-too-thin",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "frame-links-too-narrow",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
+    "case": "frame-arms-too-narrow",
+    "expected": "rejected",
+    "passed": true
+  },
+  {
     "case": "assembly",
     "expected": "compiled",
     "passed": true
@@ -176,6 +241,11 @@
   },
   {
     "case": "base-wrapper-6",
+    "expected": "compiled",
+    "passed": true
+  },
+  {
+    "case": "reinforced-frame-wrapper",
     "expected": "compiled",
     "passed": true
   },

@@ -1,10 +1,10 @@
 [
   {
     "file": "base-m3x6.stl",
-    "triangles": 5496,
+    "triangles": 5396,
     "closed_edge_manifold": true,
     "connected_components": 1,
-    "volume_mm3": 3630.76,
+    "volume_mm3": 3667.35,
     "bounds_mm": [
       [
         -1.15,

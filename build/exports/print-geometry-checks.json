@@ -45,8 +45,13 @@
   },
   {
     "usb_opening_width_mm": 10.4,
-    "usb_opening_height_mm": 6.8,
-    "usb_bridge_thickness_mm": 0.8,
+    "usb_opening_height_mm": 3.8,
+    "usb_opening_bottom_z_mm": 0.4,
+    "usb_opening_top_z_mm": 4.2,
+    "usb_top_reduction_mm": 3.0,
+    "usb_bridge_thickness_mm": 3.8,
+    "nominal_clearance_above_connector_mm": 0.0,
+    "flat_upper_corners_verified": true,
     "under_board_connector_clearance_verified": true,
     "continuous_usb_roof_measured_in_compact_base": true
   }

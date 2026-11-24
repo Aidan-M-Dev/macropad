@@ -16,8 +16,8 @@ PRINTABLES := $(foreach length,$(LENGTHS),build/exports/base-m3x$(length).stl) \
 REFERENCES := $(foreach length,$(LENGTHS),$(addprefix build/previews/meshes/m3x$(length)/,$(addsuffix .stl,$(REFERENCE_PARTS))))
 BASE_LOGS := $(foreach length,$(LENGTHS),build/exports/logs/m3x$(length)-base-m3x$(length).log)
 MESH_OUTPUTS := $(PRINTABLES) $(REFERENCES) $(BASE_LOGS) build/exports/clearance-checks.json
-FRAME_OUTPUTS := build/exports/top-frame.stl build/exports/top-frame-reinforced.stl build/exports/top-frame-checks.json \
-                 $(foreach variant,frame frame-reinforced,$(foreach length,$(LENGTHS),$(addprefix build/previews/meshes/$(variant)-base$(length)/,$(addsuffix .stl,top_frame_assembled top_screws))))
+FRAME_OUTPUTS := build/exports/top-frame-reinforced.stl build/exports/top-frame-checks.json \
+                 $(foreach length,$(LENGTHS),$(addprefix build/previews/meshes/frame-reinforced-base$(length)/,$(addsuffix .stl,top_frame_assembled top_screws)))
 
 .PHONY: help prepare build preview check board all clean top-frame templates
 
@@ -28,7 +28,7 @@ help:
 	@echo "make check    Refresh previews and run all existing design checks"
 	@echo "make board    Render front/back PCB images"
 	@echo "make templates  Refresh the artist's PNG guides and blank canvases"
-	@echo "make top-frame  Export and preview the minimal switch retaining frame"
+	@echo "make top-frame  Export and preview the reinforced switch retaining frame"
 	@echo "make all      Run all checks and render the PCB"
 	@echo "make clean    Remove generated build/ output"
 
