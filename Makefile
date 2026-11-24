@@ -3,6 +3,7 @@
 .DELETE_ON_ERROR:
 
 PYTHON ?= python3
+PIO ?= pio
 export PYTHONDONTWRITEBYTECODE := 1
 
 PCB := hardware/IC\ Hack\ Macro\ Pad.kicad_pcb
@@ -19,7 +20,7 @@ MESH_OUTPUTS := $(PRINTABLES) $(REFERENCES) $(BASE_LOGS) build/exports/clearance
 FRAME_OUTPUTS := build/exports/top-frame-reinforced.stl build/exports/top-frame-checks.json \
                  $(foreach length,$(LENGTHS),$(addprefix build/previews/meshes/frame-reinforced-base$(length)/,$(addsuffix .stl,top_frame_assembled top_screws)))
 
-.PHONY: help prepare build preview check board all clean top-frame templates
+.PHONY: help prepare build preview check board all clean top-frame templates firmware firmware-clean
 
 help:
 	@echo "make prepare  Generate board datums and CAD colours (before opening OpenSCAD)"
@@ -29,8 +30,10 @@ help:
 	@echo "make board    Render front/back PCB images"
 	@echo "make templates  Refresh the artist's PNG guides and blank canvases"
 	@echo "make top-frame  Export and preview the reinforced switch retaining frame"
-	@echo "make all      Run all checks and render the PCB"
-	@echo "make clean    Remove generated build/ output"
+	@echo "make firmware  Build the combined keyboard and games UF2 (requires PlatformIO)"
+	@echo "make firmware-clean  Remove firmware build output; keep cached dependencies"
+	@echo "make all      Run design checks, render the PCB and build firmware"
+	@echo "make clean    Remove generated build/ and firmware build output"
 
 prepare: $(PCB_DATA) $(APPEARANCE)
 
@@ -79,7 +82,13 @@ board: prepare build/board/macropad-preview.png build/board/macropad-preview.svg
 build/board/macropad-preview.png build/board/macropad-preview.svg &: $(PCB) $(DESIGN_INPUTS) tools/render_board.py tools/appearance.py tools/paths.py build/generated/pcb_geometry.json
 	$(PYTHON) tools/render_board.py
 
-all: check board
+firmware:
+	$(PIO) run -d firmware -e ichack -t combined
 
-clean:
+firmware-clean:
+	rm -rf firmware/.pio/build
+
+all: check board firmware
+
+clean: firmware-clean
 	rm -rf build

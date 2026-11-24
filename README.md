@@ -46,10 +46,12 @@ make check     # Refresh previews, then run the full design checks
 make board     # Render front/back PCB images
 make templates # Regenerate the artist’s PNG guides and blank canvases
 make top-frame # Build and preview the reinforced switch retaining top
-make all       # Full checks plus board images
+make firmware  # Build combined keyboard/Pong/Breakout/Doom UF2 (PlatformIO)
+make firmware-clean  # Remove firmware build output; keep cached dependencies
+make all       # Full design checks, board images and firmware build
 ```
 
-`make` lists the commands. Set `PYTHON=/path/to/python` to use another interpreter. The Makefile handles the order; PCB edits automatically refresh extracted geometry, and colour/artwork edits reuse existing meshes. Deleting a required mesh triggers a rebuild. Use `make clean` to remove all generated output, then `make all` to reproduce it.
+`make` lists the commands. Set `PYTHON=/path/to/python` to use another interpreter, or `PIO=/path/to/pio` to select PlatformIO. See the [firmware installation instructions](firmware/README.md#building) before building firmware. The Makefile handles the order; PCB edits automatically refresh extracted geometry, and colour/artwork edits reuse existing meshes. Deleting a required mesh triggers a rebuild. Use `make clean` to remove generated build output, then `make all` to reproduce it. Firmware dependency caches are retained.
 
 ## What to edit
 
@@ -64,6 +66,7 @@ make all       # Full checks plus board images
 
 | Path | Contents |
 | --- | --- |
+| `firmware/.pio/build/ichack/ichack-combined.uf2` | Combined keyboard, Pong, Breakout and Doom firmware |
 | `build/exports/base-m3x6.stl` | Existing compact base for the reinforced frame |
 | `build/exports/top-frame-reinforced.stl` | [Reinforced retaining top; no separate washers](case/TOP-FRAME.md) |
 | `build/exports/accessories/` | Printable washers and nut-fit tester |
