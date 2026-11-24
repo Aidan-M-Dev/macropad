@@ -1,0 +1,1027 @@
+IC Hack Macro Pad Doom port
+
+Apply this patch to Smallest Doom at e176ccb7a444e686b0fd6eb9c31ba09627d14157.
+https://github.com/GorGylka/Smallest-Doom
+
+Verified with Pico SDK 98a542c1a62fb549ffb5d66a3e5892b06276b670 and Pico Extras 52fd7a786ce47c989afeaee67e0c6aebee56ed2d.
+Run from the patched checkout with the ARM cross-compiler and picotool on PATH.
+
+  cmake -S . -B build -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DPICO_BOARD=pico2 -DPICO_FLASH_SIZE_BYTES=2097152 -DPICO_NO_PICOTOOL=1 \
+    -DPICO_SDK_PATH="$PICO_SDK_PATH" -DPICO_EXTRAS_PATH="$PICO_EXTRAS_PATH"
+  cmake --build build --target doom_tiny --parallel
+  picotool uf2 convert -t elf build/src/doom_tiny.elf build/ichack-doom.uf2
+
+The patch uses the upstream doom1.whx shareware data verbatim. The build disables audio and embeds the data at 0x1002f000.
+
+The PlatformIO upload target packs the keyboard and Doom together. To regenerate its Doom payload, replace firmware/doom/doom_tiny.bin with build/src/doom_tiny.bin from this build.
+
+Run from the macropad repository root with the board in BOOTSEL mode.
+
+  pio run -d firmware -e ichack -t upload
+
+Hold H and K during reset to start Doom. Reset with both released to return to the keyboard.
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 54a9f37..2b002cd 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -570,7 +570,7 @@ function(add_doom_tiny SUFFIX RENDER_LIB)
+         PICO_DEBUG_MALLOC=1
+         EMU8950_NO_RATECONV=1
+ 
+-        PICO_CORE1_STACK_SIZE=0x4f8
++        PICO_CORE1_STACK_SIZE=0xc00
+ 
+         NO_IERROR=1
+     )
+@@ -639,10 +639,22 @@ if (PICO_SDK)
+             NO_USE_FINALE_CAST=1
+             NO_USE_FINALE_BUNNY=1
+     )
++    set(ichack_wad_address 0x1002f000)
+     target_compile_definitions(doom_tiny PRIVATE
+-            TINY_WAD_ADDR=0x10040000
++            TINY_WAD_ADDR=${ichack_wad_address}
++            ICHACK_WAD_PATH="${PROJECT_SOURCE_DIR}/doom1.whx"
++            ICHACK_SILENT=1
++            GPIO_BUTTONS=1
++            PICO_STACK_SIZE=0x1000
++            ICHACK_TRACE=1
+     )
+-    target_link_libraries(doom_tiny PRIVATE tiny_settings)
++    target_sources(doom_tiny PRIVATE pico/ichack_wad.S pico/ichack_trace.S)
++    set_property(SOURCE pico/ichack_wad.S APPEND PROPERTY OBJECT_DEPENDS "${PROJECT_SOURCE_DIR}/doom1.whx")
++    target_link_options(doom_tiny PRIVATE
++            "LINKER:--section-start=.doom_wad=${ichack_wad_address}"
++            "LINKER:--undefined=ichack_doom_wad"
++    )
++    target_link_libraries(doom_tiny PRIVATE tiny_settings hardware_watchdog)
+     add_doom_tiny(_nost render_newhope)
+ 
+     target_compile_definitions(doom_tiny_nost PRIVATE
+diff --git a/src/doom/d_main.c b/src/doom/d_main.c
+index ee79bd5..2852b57 100644
+--- a/src/doom/d_main.c
++++ b/src/doom/d_main.c
+@@ -27,6 +27,9 @@
+ #include <string.h>
+ 
+ #include "config.h"
++#if ICHACK_TRACE
++#include "ichack_trace.h"
++#endif
+ #include "deh_main.h"
+ #include "doomdef.h"
+ #include "doomstat.h"
+@@ -183,6 +186,9 @@ void R_ExecuteSetViewSize (void);
+ 
+ boolean D_Display (void)
+ {
++#if ICHACK_TRACE
++    ichack_trace_stage('D');
++#endif
+ #if PICO_DOOM
+     pd_begin_frame();
+ #endif
+@@ -265,6 +271,9 @@ boolean D_Display (void)
+     I_UpdateNoBlit ();
+  
+     // draw the view directly
++#if ICHACK_TRACE
++    ichack_trace_stage('G');
++#endif
+     if (gamestate == GS_LEVEL && !automapactive && gametic)
+ 	    R_RenderPlayerView (&players[displayplayer]);
+ 
+@@ -339,6 +348,9 @@ boolean D_Display (void)
+ #endif
+ 
+ #if PICO_DOOM
++#if ICHACK_TRACE
++    ichack_trace_stage('E');
++#endif
+     pd_end_frame(wipe);
+ #else
+ 
+@@ -456,6 +468,9 @@ boolean D_GrabMouseCallback(void)
+ //
+ void D_RunFrame()
+ {
++#if ICHACK_TRACE
++    ichack_trace_stage('T');
++#endif
+ #if !DOOM_TINY
+     int nowtime;
+     int tics;
+@@ -491,6 +506,9 @@ void D_RunFrame()
+     // Update display, next frame, with current state if no profiling is on
+     if (screenvisible && !nodrawers)
+     {
++#if ICHACK_TRACE
++        ichack_trace_stage('R');
++#endif
+ #if !DOOM_TINY
+         if ((wipe = D_Display ()))
+         {
+@@ -510,6 +528,10 @@ void D_RunFrame()
+         I_FinishUpdate();
+ #endif
+     }
++
++#if ICHACK_TRACE
++    ichack_trace_frame(gametic);
++#endif
+ }
+ 
+ //
+diff --git a/src/doom/g_game.c b/src/doom/g_game.c
+index f38b5e5..ac5c453 100644
+--- a/src/doom/g_game.c
++++ b/src/doom/g_game.c
+@@ -1813,7 +1813,7 @@ void G_DoLoadGame (void) {
+ }
+  
+ 
+-#if PICO_ON_DEVICE
++#if PICO_ON_DEVICE && !NO_USE_SAVE
+ static boolean save_game_clear(int key) {
+     if (key == key_menu_confirm) {
+         uint32_t size;
+diff --git a/src/i_main.c b/src/i_main.c
+index b2b5696..9761a80 100644
+--- a/src/i_main.c
++++ b/src/i_main.c
+@@ -40,6 +40,10 @@
+ #include "i_system.h"
+ #include "m_argv.h"
+ 
++#if ICHACK_TRACE
++#include "ichack_trace.h"
++#endif
++
+ //
+ // D_DoomMain()
+ // Not a globally visible function, just included for source reference,
+@@ -48,13 +52,17 @@
+ 
+ void D_DoomMain (void);
+ 
+-#if PICO_ON_DEVICE
++#if PICO_ON_DEVICE && !ICHACK_SILENT
+ #include "pico/binary_info.h"
+ bi_decl(bi_3pins_with_names(PICO_AUDIO_I2S_DATA_PIN, "I2S DIN", PICO_AUDIO_I2S_CLOCK_PIN_BASE, "I2S BCK", PICO_AUDIO_I2S_CLOCK_PIN_BASE+1, "I2S LRCK"));
+ #endif
+ 
+ int main(int argc, char **argv)
+ {
++#if ICHACK_TRACE
++    ichack_trace_start();
++#endif
++
+     // save arguments
+ #if !NO_USE_ARGS
+     myargc = argc;
+diff --git a/src/i_sound.c b/src/i_sound.c
+index ebeb7a4..96b07a6 100644
+--- a/src/i_sound.c
++++ b/src/i_sound.c
+@@ -250,7 +250,11 @@ void I_InitSound(boolean use_sfx_prefix)
+     // Disable all sound output.
+     //
+ 
++#if ICHACK_SILENT
++    nosound = true;
++#else
+     nosound = M_CheckParm("-nosound") > 0;
++#endif
+ 
+     //!
+     // @vanilla
+@@ -581,4 +585,4 @@ void I_BindSoundVariables(void)
+     M_BindIntVariable("use_libsamplerate",       &use_libsamplerate);
+     M_BindFloatVariable("libsamplerate_scale",   &libsamplerate_scale);
+ #endif
+-}
+\ No newline at end of file
++}
+diff --git a/src/pd_render.cpp b/src/pd_render.cpp
+index c8e1091..8fc0b7d 100644
+--- a/src/pd_render.cpp
++++ b/src/pd_render.cpp
+@@ -31,6 +31,9 @@ extern "C" {
+ #include "i_video.h"
+ }
+ // todo compare with and without
++#if ICHACK_TRACE
++#include "ichack_trace.h"
++#endif
+ #define USE_XIPCPY 0
+ 
+ #if !PICO_FRANTIC_GREYSCALE
+@@ -824,7 +827,10 @@ void pd_init() {
+     sem_init(&core0_done, 0, 1);
+     sem_init(&core1_done, 0, 1);
+ #endif
+-#if PICO_ON_DEVICE
++#if PICO_RP2350
++    static vpatchlists_t patchlists;
++    vpatchlists = &patchlists;
++#elif PICO_ON_DEVICE
+     static_assert(sizeof(vpatchlists_t) < 0xc00, "");
+     vpatchlists = (vpatchlists_t *)(USBCTRL_DPRAM_BASE + 0x400);
+ #else
+@@ -2657,6 +2663,9 @@ void pd_end_frame(int wipe_start) {
+         }
+     }
+     // render the visplane identifiers, freeing up the visplane columns (which we will use below)
++#if ICHACK_TRACE
++    ichack_trace_stage('L');
++#endif
+     int16_t fr_list = predraw_visplanes();
+ 
+     // ... now we can be parallel
+@@ -2669,6 +2678,9 @@ void pd_end_frame(int wipe_start) {
+     re_sort_regular_columns_by_fd_num();
+ #if USE_CORE1_FOR_REGULAR
+     sem_release(&core1_do_regular);
++#endif
++#if ICHACK_TRACE
++    ichack_trace_stage('C');
+ #endif
+     draw_regular_columns(0);
+ #if !DEMO1_ONLY && !DOOM_LOWRES
+@@ -2759,6 +2771,9 @@ void pd_end_frame(int wipe_start) {
+                     int pnum = W_GetNumForName(pagename);
+                     assert(pnum);
+                     next_video_type = VIDEO_TYPE_DOUBLE;
++#if ICHACK_TRACE
++                    ichack_trace_stage('S');
++#endif
+                     draw_splash(pnum, frame_buffer[render_frame_index]);
+                 }
+                 break;
+@@ -2819,6 +2834,9 @@ next_video_type = VIDEO_TYPE_DOUBLE;
+     if (gamestate == GS_FINALE && finalestage == F_STAGE_CAST && !wipestate) {
+         F_CastDrawer(); // just draw the text
+     }
++#endif
++#if ICHACK_TRACE
++    ichack_trace_stage('M');
+ #endif
+     M_Drawer();
+ 
+@@ -2997,4 +3015,4 @@ void draw_cast_sprite(int sprite_lump) {
+     // now blit to the screen (could have waited for a vsync here but i don't see any flickering)
+     memcpy(frame_buffer[render_frame_index] + top * SCREENWIDTH, render_frame_buffer, (SCREENHEIGHT - top) * SCREENWIDTH);
+ }
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/src/pico/CMakeLists.txt b/src/pico/CMakeLists.txt
+index 4083471..f6210c8 100644
+--- a/src/pico/CMakeLists.txt
++++ b/src/pico/CMakeLists.txt
+@@ -13,7 +13,6 @@ target_sources(common_pico INTERFACE
+ if (PICO_ON_DEVICE)
+     target_sources(common_pico INTERFACE
+             ${CMAKE_CURRENT_LIST_DIR}/blit.S
+-            ${CMAKE_CURRENT_LIST_DIR}/picoflash.c
+             )
+     pico_wrap_function(common_pico malloc)
+     pico_wrap_function(common_pico calloc)
+@@ -44,4 +43,4 @@ target_link_libraries(common_pico INTERFACE pico_stdlib pico_multicore)
+ add_library(pico_cd INTERFACE)
+ if (TARGET tinyusb_host)
+     target_link_libraries(pico_cd INTERFACE tinyusb_host)
+-endif()
+\ No newline at end of file
++endif()
+diff --git a/src/pico/i_input.c b/src/pico/i_input.c
+index 14e9edf..5ea1710 100644
+--- a/src/pico/i_input.c
++++ b/src/pico/i_input.c
+@@ -34,6 +34,9 @@
+ #include "m_controls.h"
+ #include "hardware/uart.h"
+ #include "hardware/gpio.h"
++#if ICHACK_TRACE
++#include "ichack_trace.h"
++#endif
+ #include <stdlib.h>
+ #if USB_SUPPORT
+ #include "pico/binary_info.h"
+@@ -236,9 +239,10 @@ enum {
+ };
+ 
+ static const uint8_t button_pins[BTN_COUNT] = {
+-    3, 4, 5, 6, 24, 27
++    7, 8, 9, 11, 10, 12
+ };
+ static uint8_t button_state[BTN_COUNT] = {0};
++static bool waiting_for_launch_keys;
+ 
+ void buttons_init() {
+     for (int i = 0; i < count_of(button_pins); ++i) {
+@@ -247,6 +251,7 @@ void buttons_init() {
+         gpio_pull_up(button_pins[i]);
+     }
+ 
++    waiting_for_launch_keys = !gpio_get(button_pins[BTN_R]) && !gpio_get(button_pins[BTN_2]);
+     key_right = KEY_RIGHTARROW;
+     key_left = KEY_LEFTARROW;
+     key_up = KEY_UPARROW;
+@@ -254,22 +259,22 @@ void buttons_init() {
+ 
+     key_fire = KEY_RCTRL;
+ 
+-    key_use = KEY_RSHIFT;
++    key_use = ' ';
+     key_strafe = KEY_RSHIFT;
+     key_speed = KEY_RSHIFT;
+ 
+     key_prevweapon = '[';
+     key_nextweapon = ']';
+ 
+-    //key_menu_activate  = KEY_ESCAPE;
++    key_menu_activate = KEY_ESCAPE;
+     key_menu_up        = KEY_UPARROW;
+     key_menu_down      = KEY_DOWNARROW;
+     key_menu_left      = KEY_LEFTARROW;
+     key_menu_right     = KEY_RIGHTARROW;
+-    key_menu_back      = KEY_RSHIFT;
++    key_menu_back      = ' ';
+     key_menu_forward   = KEY_RCTRL;
+     key_menu_confirm   = KEY_RCTRL;
+-    key_menu_abort     = KEY_RSHIFT;
++    key_menu_abort     = ' ';
+ }
+ 
+ void button_event(key_type_t key, bool pressed) {
+@@ -289,8 +294,25 @@ void button_event(key_type_t key, bool pressed) {
+ }
+ 
+ void buttons_getevent() {
++    if (waiting_for_launch_keys){
++        waiting_for_launch_keys = !gpio_get(button_pins[BTN_R]) || !gpio_get(button_pins[BTN_2]);
++        return;
++    }
++
++    static bool menu_pressed;
++    const bool menu = !gpio_get(button_pins[BTN_1]) && !gpio_get(button_pins[BTN_2]);
++#if ICHACK_TRACE
++    uint32_t pressed_mask = 0;
++#endif
+     for (int i = 0; i < BTN_COUNT; ++i) {
+         bool pressed = (gpio_get(button_pins[i]) == 0);
++#if ICHACK_TRACE
++        pressed_mask |= (uint32_t)pressed << i;
++#endif
++        if (menu && (i == BTN_1 || i == BTN_2)){
++            pressed = false;
++        }
++
+         if (pressed != (button_state[i] != 0)) {
+             bool alt = (button_state[i] > 1);
+             button_state[i] = pressed;
+@@ -325,6 +347,22 @@ void buttons_getevent() {
+             }
+         }
+     }
++
++    if (menu != menu_pressed){
++        button_event(key_menu_activate, menu);
++        menu_pressed = menu;
++    }
++#if ICHACK_TRACE
++    ichack_trace_flags(pressed_mask);
++    const uint32_t trace_keys = (1u << BTN_U) | (1u << BTN_D);
++    if ((pressed_mask & trace_keys) == trace_keys){
++        ichack_trace_stage('Q');
++        watchdog_reboot(0, 0, 1);
++        while (true){
++            tight_loop_contents();
++        }
++    }
++#endif
+ }
+ 
+ #endif
+@@ -1140,4 +1178,4 @@ static void process_generic_report(uint8_t dev_addr, uint8_t instance, uint8_t c
+     }
+ }
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/src/pico/i_system.c b/src/pico/i_system.c
+index 461f7c7..9d2b111 100644
+--- a/src/pico/i_system.c
++++ b/src/pico/i_system.c
+@@ -138,10 +138,16 @@ static byte *AutoAllocMemory(int *size, int default_ram, int min_ram)
+         zonemem = malloc(*size);
+ #else
+ #if PICO_ON_DEVICE
+-        // we have set heap size to 0, so __HeapLimit is a good value
+-        extern char __HeapLimit;
+-        zonemem = (uint8_t *)(((uintptr_t)&__HeapLimit)&~3);
+-        *size = ((uint8_t *)SRAM4_BASE) - zonemem;
++        extern char __end__;
++        const uintptr_t zone_start = ((uintptr_t)&__end__ + 3u) & ~(uintptr_t)3u;
++        // compact pointers address first 256 kib of sram
++        const uintptr_t zone_end = SRAM_BASE + 256u * 1024u;
++        if (zone_start >= zone_end){
++            panic("Doom zone does not fit in the first 256 KiB of SRAM");
++        }
++
++        zonemem = (uint8_t *)zone_start;
++        *size = zone_end - zone_start;
+ #else
+ #error use zone for malloc only on device
+ #endif
+@@ -655,4 +661,4 @@ void __wrap_free(void *mem) {
+     Z_Free(mem);
+ }
+ #endif
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/src/pico/i_timer.c b/src/pico/i_timer.c
+index e22699f..ff1cd83 100644
+--- a/src/pico/i_timer.c
++++ b/src/pico/i_timer.c
+@@ -29,7 +29,7 @@
+ 
+ int  I_GetTime (void)
+ {
+-    return TICRATE * (uint32_t)(time_us_64() / 1000);
++    return (int)(time_us_64() * TICRATE / 1000000);
+ }
+ 
+ //
+diff --git a/src/pico/i_video.c b/src/pico/i_video.c
+index 7781e3e..1bad4cb 100644
+--- a/src/pico/i_video.c
++++ b/src/pico/i_video.c
+@@ -53,8 +53,10 @@
+ #include "image_decoder.h"
+ #if PICO_ON_DEVICE
+ #include "hardware/dma.h"
+-#include "hardware/structs/xip_ctrl.h"
+-#include "hardware/spi.h"
++#include "hardware/structs/sio.h"
++#if ICHACK_TRACE
++#include "ichack_trace.h"
++#endif
+ #else
+ #include "SDL_image.h"
+ #include "SDL_mutex.h"
+@@ -65,8 +67,8 @@
+ int debugline = 39;
+ 
+ #if PICO_ON_DEVICE
+-#define DISPLAYWIDTH 72
+-#define DISPLAYHEIGHT 40
++#define DISPLAYWIDTH 128
++#define DISPLAYHEIGHT 32
+ #else
+ 
+ #if FSAA
+@@ -339,9 +341,15 @@ void __noinline new_frame_init_overlays_palette_and_wipe() {
+ //
+ // I_FinishUpdate
+ //
++#if PICO_ON_DEVICE
++static void present_oled_frame(void);
++#endif
++
+ void I_FinishUpdate (void)
+ {
++#if !PICO_ON_DEVICE
+     sem_acquire_blocking(&vsync);
++#endif
+ 
+     display_video_type = next_video_type;
+     display_frame_index = next_frame_index;
+@@ -352,102 +360,201 @@ void I_FinishUpdate (void)
+         new_frame_init_overlays_palette_and_wipe();
+     }
+ 
++#if PICO_ON_DEVICE
++#if ICHACK_TRACE
++    ichack_trace_stage('O');
++#endif
++    present_oled_frame();
++#else
+     sem_release(&vsync);
++#endif
+ }
+ 
+ #pragma GCC pop_options
+ 
+ #if PICO_ON_DEVICE
+-#define LOW_PRIO_IRQ 31
+-#include "hardware/irq.h"
++enum {
++    oled_sda = 4,
++    oled_scl = 5,
++    oled_data_mask = 1u << oled_sda,
++    oled_clock_mask = 1u << oled_scl
++};
+ 
+-static void __not_in_flash_func(free_buffer_callback)() {
+-//    irq_set_pending(LOW_PRIO_IRQ);
+-    // ^ is in flash by default
+-    *((io_rw_32 *) (PPB_BASE + M0PLUS_NVIC_ISPR_OFFSET)) = 1u << LOW_PRIO_IRQ;
++static uint8_t oled_address;
++static uint8_t field_buffer[DISPLAYWIDTH * DISPLAYHEIGHT / 8];
++static const uint8_t enable_view[] = {
++    0x00, 0x21, 0, DISPLAYWIDTH - 1,
++    0x22, 0, DISPLAYHEIGHT / 8 - 1, 0xaf
++};
++
++static inline void oled_bus_delay(void) {
++    // 225 cycles at 150 mhz leaves margin for open drain rise time
++    busy_wait_at_least_cycles(225);
+ }
+ 
+-#define FRAME_PERIOD J_OLED_FRAME_PERIOD
+-
+-// some oleds need 2 park lines, but that's not as robust
+-#define PARK_LINES 1
+-
+-static const uint8_t command_initialise[] = {
+-    0xAE,           //display off
+-    0xD5, 0xF0,     //set display clock divide
+-    0xA8, DISPLAYHEIGHT-1, //set multiplex ratio 39
+-    0xD3, 0x00,     //set display offset
+-    0x40,           //set display start line 0
+-    0x8D, 0x14,     //set charge pump enabled (0x14:7.5v 0x15:6.0v 0x94:8.5v 0x95:9.0v)
+-    0x20, 0x00,     //set addressing mode horizontal
+-    0xA1,           //set segment remap (0=seg0)
+-    0xC0,           //set com scan direction
+-    0xDA, 0x12,     //set alternate com pin configuration
+-    0xAD, 0x30,     //internal iref enabled (0x30:240uA 0x10:150uA)
+-    0x81, 0x01,     //set contrast
+-    0xD9, 0x11,     //set pre-charge period
+-    0xDB, 0x20,     //set vcomh deselect
+-    0xA4,           //unset entire display on
+-    0xA6,           //unset inverse display
+-    0x21, 28, 99,   //set column address / start 28 / end 99
+-    0x22, 0, 4,     //set page address / start 0 / end 4
+-    0xAF            // set display on
+-};
++static void oled_clock_low(void) {
++    sio_hw->gpio_oe_set = oled_clock_mask;
++    oled_bus_delay();
++}
+ 
+-static const uint8_t command_park[] = {
+-    0xA8, PARK_LINES - 1,        //set 2-line multiplex
+-    0xD3, 4         //set display offset off the... bottom?
+-};
++static bool oled_clock_high(void) {
++    sio_hw->gpio_oe_clr = oled_clock_mask;
++    for (unsigned attempt = 0; attempt < 32; ++attempt){
++        if (sio_hw->gpio_in & oled_clock_mask){
++            oled_bus_delay();
++            return true;
++        }
+ 
+-static uint8_t command_run[] = {
+-    0x81, 1,        //set level
+-    0xD3, 0,        //reset display offset
+-    0xA8, DISPLAYHEIGHT + 16 - 1,       //multiplex + overscan
+-};
++        oled_bus_delay();
++    }
+ 
+-static const uint8_t contrast[3] = {
+-    0x7f, 0x1f, 0x07
+-};
++    return false;
++}
++
++static bool oled_stop(void) {
++    oled_clock_low();
++    sio_hw->gpio_oe_set = oled_data_mask;
++    oled_bus_delay();
++    const bool clock_high = oled_clock_high();
++    sio_hw->gpio_oe_clr = oled_data_mask;
++    oled_bus_delay();
++    return clock_high && (sio_hw->gpio_in & oled_data_mask);
++}
++
++static bool oled_write_byte(uint8_t byte) {
++    for (unsigned bit = 0x80; bit; bit >>= 1){
++        if (byte & bit){
++            sio_hw->gpio_oe_clr = oled_data_mask;
++        }
++
++        else {
++            sio_hw->gpio_oe_set = oled_data_mask;
++        }
++
++        oled_bus_delay();
++        if (!oled_clock_high()){
++            return false;
++        }
+ 
+-uint8_t field_buffer[DISPLAYWIDTH*(DISPLAYHEIGHT/8)] = {};
++        oled_clock_low();
++    }
+ 
+-uint8_t byte_reverse(uint8_t b) {
+-   b = (b & 0xF0) >> 4 | (b & 0x0F) << 4;
+-   b = (b & 0xCC) >> 2 | (b & 0x33) << 2;
+-   b = (b & 0xAA) >> 1 | (b & 0x55) << 1;
+-   return b;
++    sio_hw->gpio_oe_clr = oled_data_mask;
++    oled_bus_delay();
++    const bool acknowledged = oled_clock_high() && !(sio_hw->gpio_in & oled_data_mask);
++    oled_clock_low();
++    return acknowledged;
+ }
+ 
+-static void display_driver_init() {
++static bool oled_write(const uint8_t *bytes, size_t count) {
++    sio_hw->gpio_oe_clr = oled_data_mask;
++    if (!oled_clock_high() || !(sio_hw->gpio_in & oled_data_mask)){
++        return false;
++    }
++
++    sio_hw->gpio_oe_set = oled_data_mask;
++    oled_bus_delay();
++    oled_clock_low();
++
++    bool acknowledged = oled_write_byte(oled_address << 1);
++    for (size_t i = 0; acknowledged && i < count; ++i){
++        acknowledged = oled_write_byte(bytes[i]);
++    }
+ 
+-    gpio_init(J_OLED_CS);
+-    gpio_set_dir(J_OLED_CS, GPIO_OUT);
+-    gpio_put(J_OLED_CS, 0);
++    return oled_stop() && acknowledged;
++}
+ 
+-    gpio_init(J_OLED_RESET);
+-    gpio_set_dir(J_OLED_RESET, GPIO_OUT);
+-    gpio_put(J_OLED_RESET, 0);
++static void oled_clear_bus(void) {
++    sio_hw->gpio_oe_clr = oled_data_mask;
++    for (unsigned pulse = 0; pulse < 9 && !(sio_hw->gpio_in & oled_data_mask); ++pulse){
++        oled_clock_low();
++        if (!oled_clock_high()){
++            break;
++        }
++    }
+ 
+-    gpio_init(J_OLED_DC);
+-    gpio_set_dir(J_OLED_DC, GPIO_OUT);
+-    gpio_put(J_OLED_DC, 0);
++    oled_stop();
++}
+ 
+-    gpio_put(J_OLED_RESET, 0);
+-    sleep_ms(1);
+-    gpio_put(J_OLED_RESET, 1);
++static bool oled_write_frame(void) {
++    uint8_t packet[33] = {0x40};
++    const size_t chunk_size = sizeof(packet) - 1;
++    for (size_t offset = 0; offset < sizeof(field_buffer); offset += chunk_size){
++        memcpy(packet + 1, field_buffer + offset, chunk_size);
++        if (!oled_write(packet, sizeof(packet))){
++            return false;
++        }
++    }
+ 
+-    gpio_set_function(PICO_DEFAULT_SPI_SCK_PIN, GPIO_FUNC_SPI);
+-    gpio_set_function(PICO_DEFAULT_SPI_TX_PIN, GPIO_FUNC_SPI);
+-    spi_init(spi0, 62500000);
+-    spi_set_format(spi0, 8, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
++    return true;
++}
+ 
+-    gpio_put(J_OLED_CS, 1);
+-    gpio_put(J_OLED_DC, 0);
+-    gpio_put(J_OLED_CS, 0);
++static void display_driver_init() {
++    static const uint8_t initialise[] = {
++        0x00, 0xae, 0xd5, 0x80, 0xa8, DISPLAYHEIGHT - 1, 0xd3, 0x00, 0x40,
++        0x8d, 0x14, 0x20, 0x00, 0xa1, 0xc8, 0xda, 0x02, 0x81, 0x8f,
++        0xd9, 0xf1, 0xdb, 0x40, 0xa4, 0xa6, 0x21, 0, DISPLAYWIDTH - 1, 0x22, 0, DISPLAYHEIGHT / 8 - 1
++    };
++    gpio_init(oled_sda);
++    gpio_init(oled_scl);
++    gpio_pull_up(oled_sda);
++    gpio_pull_up(oled_scl);
++
++    for (int attempt = 0; attempt < 5; ++attempt){
++        oled_clear_bus();
++        for (oled_address = 0x3c; oled_address <= 0x3d; ++oled_address){
++            if (oled_write(initialise, sizeof(initialise)) && oled_write_frame() && oled_write(enable_view, sizeof(enable_view))){
++                return;
++            }
++        }
++
++        busy_wait_at_least_cycles(3000000);
++    }
++
++    oled_address = 0;
++}
++
++static void present_oled_frame(void) {
++    if (!oled_address){
++#if ICHACK_TRACE
++        ichack_trace_flags(0x80);
++#endif
++        return;
++    }
++
++    static const uint8_t thresholds[4][4] = {
++        {8, 136, 40, 168},
++        {200, 72, 232, 104},
++        {56, 184, 24, 152},
++        {248, 120, 216, 88},
++    };
++    const uint8_t *frame = frame_buffer[display_frame_index];
++    for (int page = 0; page < DISPLAYHEIGHT / 8; ++page){
++        for (int x = 0; x < DISPLAYWIDTH; ++x){
++            const int source_x = x * SCREENWIDTH / DISPLAYWIDTH;
++            uint8_t pixels = 0;
++            for (int bit = 0; bit < 8; ++bit){
++                const int y = page * 8 + bit;
++                const int source_y = y * SCREENHEIGHT / DISPLAYHEIGHT;
++                const uint8_t luminance = palette[frame[source_y * SCREENWIDTH + source_x]];
++                if (luminance >= thresholds[y % 4][x % 4]){
++                    pixels |= 1u << bit;
++                }
++            }
+ 
+-    spi_write_blocking(spi0, command_initialise, sizeof(command_initialise));
++            field_buffer[page * DISPLAYWIDTH + x] = pixels;
++        }
++    }
+ 
+-    gpio_put(J_OLED_CS, 1);
++#if ICHACK_TRACE
++    ichack_trace_stage('W');
++#endif
++    if (!oled_write(enable_view, sizeof(enable_view)) || !oled_write_frame()){
++#if ICHACK_TRACE
++        ichack_trace_flags(0x40);
++#endif
++        display_driver_init();
++    }
+ }
+ #else
+ 
+@@ -539,116 +646,30 @@ static void simulate_display(uint dither) {
+ }
+ 
+ 
+-#endif
+-
+-//#define TESTCARD_BAR 1
+-
+ static void core1() {
+-    absolute_time_t frame_time = get_absolute_time();
+-
+-    uint l = 0;
+-    uint dither = 0;
+-
+     while (true) {
+-#if PICO_ON_DEVICE
+-        gpio_put(J_OLED_CS, 0);
+-
+-        gpio_put(J_OLED_DC, 0);
+-        spi_write_blocking(spi0, command_park, sizeof(command_park));
+-#endif
+-
+-        if (l == 0) {
+-            sem_acquire_blocking(&vsync);
+-        }
+-
+-#if PICO_ON_DEVICE
+-        uint8_t level = 0x04 >> l;
+-
+-        for (int p = 0; p < (DISPLAYHEIGHT / 8) ; ++p) {
+-            for (int x = 0; x < DISPLAYWIDTH; ++x) {
+-                dither ^= 1;
+-                uint8_t byte = 0;
+-                for (int b = 0; b < 8; ++b) {
+-                    dither ^= 1;
+-
+-                    int y = (DISPLAYHEIGHT-1)-(p*8+b);
+-#if FSAA
+-                    uint8_t *pframe = &frame_buffer[display_frame_index][y*(SCREENWIDTH<<FSAA) + (x<<FSAA)];
+-                    uint lum = 0;
+-                    for (int aay=0; aay<(1<<FSAA); ++aay) {
+-                        for (int aax=0; aax<(1<<FSAA); ++aax) {
+-                            lum += palette[pframe[aay*SCREENWIDTH + aax]];
+-                        }
+-                    }
+-                    lum >>= (FSAA*2);
+-                    pframe += (1<<FSAA);
+-#else
+-                    uint8_t *pframe = &frame_buffer[display_frame_index][y*SCREENWIDTH + x];
+-                    uint lum = palette[*pframe];
+-#endif
+-
+-#if TESTCARD_BAR
+-                    if (x < 8)
+-                        lum = y*6;
+-#endif
+-
+-                    lum = (lum >> 5) + ((lum >> 4) & dither);
+-                    lum = MIN(lum, 7);
+-
+-#if DEBUGLINE
+-                    if (x < 6)
+-                        lum = (-(((y>>(5-x))&1)==0))&7;
+-                    if (y == debugline)
+-                        lum = 7;
+-#endif
+-
+-                    byte >>= 1;
+-                    if (lum & level) {
+-                        byte |= 0x80;
+-                    }
+-                }
+-                field_buffer[p*DISPLAYWIDTH+x] = byte;
+-            }
+-        }
+-        
+-        command_run[1] = contrast[l];
+-#else
+-        simulate_display(dither);
+-#endif
+-
+-        if (++l >= 3) {
+-            l = 0;
+-            dither ^= 1;
+-        }
+-
+-        if (l == 0) {
+-            sem_release(&vsync);
+-        }
+-
+-#if PICO_ON_DEVICE
+-        gpio_put(J_OLED_DC, 1);
+-        spi_write_blocking(spi0, field_buffer, sizeof(field_buffer));
+-        gpio_put(J_OLED_DC, 0);
+-
+-        spi_write_blocking(spi0, command_run, sizeof(command_run));
+-
+-        gpio_put(J_OLED_CS, 1);
+-#endif
+-
+-        frame_time = delayed_by_us(frame_time, FRAME_PERIOD);
+-        sleep_until(frame_time);
++        const absolute_time_t deadline = make_timeout_time_us(FRAME_PERIOD);
++        sem_acquire_blocking(&vsync);
++        simulate_display(0);
++        sem_release(&vsync);
++        sleep_until(deadline);
+     }
+ }
++#endif
+ 
+ void I_InitGraphics(void)
+ {
+     stbar = resolve_vpatch_handle(VPATCH_STBAR);
++#if !PICO_ON_DEVICE
+     sem_init(&vsync, 1, 1);
++#endif
+     pd_init();
+ 
+     display_driver_init();
+ 
++#if !PICO_ON_DEVICE
+     multicore_launch_core1(core1);
++#endif
+ 
+ #if USE_ZONE_FOR_MALLOC
+     disallow_core1_malloc = true;
+diff --git a/src/pico/ichack_trace.S b/src/pico/ichack_trace.S
+new file mode 100644
+index 0000000..f0fa24e
+--- /dev/null
++++ b/src/pico/ichack_trace.S
+@@ -0,0 +1,56 @@
++#include "pico/asm_helper.S"
++#include "hardware/regs/addressmap.h"
++#include "hardware/regs/m33.h"
++#include "hardware/regs/powman.h"
++#include "hardware/regs/timer.h"
++#include "ichack_trace.h"
++
++.syntax unified
++.thumb
++.section .text.ichack_trace, "ax", %progbits
++
++.global ichack_trace_sample
++.type ichack_trace_sample, %function
++.thumb_func
++ichack_trace_sample:
++    tst lr, #4
++    ite eq
++    mrseq r0, msp
++    mrsne r0, psp
++    ldr r0, [r0, #24]
++    ldr r1, =(POWMAN_BASE + POWMAN_SCRATCH4_OFFSET)
++    str r0, [r1]
++    ldr r1, =TIMER1_BASE
++    movs r0, #1
++    str r0, [r1, #TIMER_INTR_OFFSET]
++    ldr r0, [r1, #TIMER_TIMERAWL_OFFSET]
++    ldr r2, =ICHACK_TRACE_SAMPLE_US
++    adds r0, r0, r2
++    str r0, [r1, #TIMER_ALARM0_OFFSET]
++    bx lr
++
++.global isr_hardfault
++.type isr_hardfault, %function
++.thumb_func
++isr_hardfault:
++    cpsid i
++    ldr r1, =(POWMAN_BASE + POWMAN_SCRATCH4_OFFSET)
++    ldr r2, =(PPB_BASE + M33_CFSR_OFFSET)
++    ldr r2, [r2]
++    str r2, [r1, #4]
++    movs r0, #0
++    movw r3, #0x1818
++    tst r2, r3
++    bne 1f
++    tst lr, #4
++    ite eq
++    mrseq r0, msp
++    mrsne r0, psp
++    ldr r0, [r0, #24]
++1:
++    str r0, [r1]
++    ldr r1, =(POWMAN_BASE + POWMAN_SCRATCH1_OFFSET)
++    movs r0, #'F'
++    str r0, [r1]
++2:
++    b 2b
+diff --git a/src/pico/ichack_trace.h b/src/pico/ichack_trace.h
+new file mode 100644
+index 0000000..01843e3
+--- /dev/null
++++ b/src/pico/ichack_trace.h
+@@ -0,0 +1,43 @@
++#pragma once
++
++#define ICHACK_TRACE_SAMPLE_US 100000
++
++#ifndef __ASSEMBLER__
++#include "hardware/irq.h"
++#include "hardware/structs/powman.h"
++#include "hardware/structs/timer.h"
++#include "hardware/watchdog.h"
++
++#define ICHACK_TRACE_MAGIC 0x444f4f4du
++
++extern void ichack_trace_sample(void);
++
++static inline void ichack_trace_start(void) {
++    powman_hw->scratch[1] = 'B';
++    powman_hw->scratch[2] = 0;
++    powman_hw->scratch[3] = 0;
++    powman_hw->scratch[4] = 0;
++    powman_hw->scratch[5] = 0;
++    powman_hw->scratch[0] = ICHACK_TRACE_MAGIC;
++    irq_set_exclusive_handler(TIMER1_IRQ_0, ichack_trace_sample);
++    timer1_hw->intr = 1;
++    timer1_hw->inte = 1;
++    timer1_hw->alarm[0] = timer1_hw->timerawl + ICHACK_TRACE_SAMPLE_US;
++    irq_set_enabled(TIMER1_IRQ_0, true);
++    watchdog_enable(3000, false);
++}
++
++static inline void ichack_trace_stage(char stage) {
++    powman_hw->scratch[1] = stage;
++}
++
++static inline void ichack_trace_flags(uint32_t flags) {
++    powman_hw->scratch[3] |= flags;
++}
++
++static inline void ichack_trace_frame(uint32_t tic) {
++    powman_hw->scratch[2] = tic;
++    ichack_trace_stage('V');
++    watchdog_update();
++}
++#endif
+diff --git a/src/pico/ichack_wad.S b/src/pico/ichack_wad.S
+new file mode 100644
+index 0000000..d89917e
+--- /dev/null
++++ b/src/pico/ichack_wad.S
+@@ -0,0 +1,4 @@
++.section .doom_wad, "a", %progbits
++.global ichack_doom_wad
++ichack_doom_wad:
++    .incbin ICHACK_WAD_PATH

@@ -21,6 +21,9 @@
 __pycache__/
 *.py[cod]
 
+# PlatformIO firmware build output and downloaded dependencies.
+/firmware/.pio/
+
 # KiCad working files
 *-backups/
 *.lck
