@@ -156,7 +156,7 @@
         "min_track_width": 0.127,
         "min_via_annular_width": 0.1,
         "min_via_diameter": 0.45,
-        "solder_mask_to_copper_clearance": 0.0,
+        "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
@@ -488,7 +488,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "IC Hack Macro Pad.kicad_pro",
+    "filename": "macropad.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -611,12 +611,84 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "FT Position Offset",
+          "name": "FT Position Offset",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "LCSC Part #",
+          "name": "LCSC Part #",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Layout requirement",
+          "name": "Layout requirement",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MFGR",
+          "name": "MFGR",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MPN",
+          "name": "MPN",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer",
+          "name": "Manufacturer",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Voltage",
+          "name": "Voltage",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "FT Layer Override",
+          "name": "FT Layer Override",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Dielectric",
+          "name": "Dielectric",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Assembly note",
+          "name": "Assembly note",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "Default Editing",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -656,12 +728,12 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "IC Hack Macro Pad.kicad_sch",
+        "filename": "macropad.kicad_sch",
         "name": "Root",
         "uuid": "d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
       }
     ],
-    "used_designators": "#FLG3,L1,SW1-8,R1-30,J1,C1-5,C24-25,C27-30,C34-41,D1-22,#PWR1-42,#PWR74,#PWR81,Y1-2,U1-5",
+    "used_designators": "#FLG3,L1,SW1-8,R1-30,J1-5,C1-5,C24-25,C27-30,C34-41,D1-22,#PWR1-42,#PWR74,#PWR81,Y1-2,U1-5",
     "variants": []
   },
   "sheets": [

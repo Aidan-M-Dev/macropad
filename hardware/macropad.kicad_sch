@@ -873,6 +873,183 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:C_Polarized"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_Polarized"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Polarized capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "CP_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "C_Polarized_0_1"
+				(rectangle
+					(start -2.286 0.508)
+					(end 2.286 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 2.286) (xy -0.762 2.286)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 2.794) (xy -1.27 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.286 -0.508)
+					(end -2.286 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "C_Polarized_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:Crystal_GND24"
 			(pin_names
 				(offset 1.016)
@@ -1146,184 +1323,6 @@
 						)
 					)
 					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Device:L"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "L"
-				(at -1.27 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "L"
-				(at 1.905 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Inductor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "inductor choke coil reactor magnetic"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Choke_* *Coil* Inductor_* L_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "L_0_1"
-				(arc
-					(start 0 2.54)
-					(mid 0.6323 1.905)
-					(end 0 1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 1.27)
-					(mid 0.6323 0.635)
-					(end 0 0)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 0)
-					(mid 0.6323 -0.635)
-					(end 0 -1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 -1.27)
-					(mid 0.6323 -1.905)
-					(end 0 -2.54)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "L_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1913,7 +1912,196 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "MCU_RaspberryPi:RP2354A"
+		(symbol "L_Dotted"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "L"
+				(at -1.27 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "L"
+				(at 1.905 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Inductor with winding dot at pin 1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "inductor choke coil reactor magnetic"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Choke_* *Coil* Inductor_* L_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "L_Dotted_0_1"
+				(circle
+					(center -1.27 2.54)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(arc
+					(start 0 2.54)
+					(mid 0.6323 1.905)
+					(end 0 1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 1.27)
+					(mid 0.6323 0.635)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 0.6323 -0.635)
+					(end 0 -1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -1.27)
+					(mid 0.6323 -1.905)
+					(end 0 -2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "L_Dotted_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "MCU_RaspberryPi:RP2350A"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1930,7 +2118,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "RP2354A"
+			(property "Value" "RP2350A"
 				(at 17.526 44.704 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1963,7 +2151,7 @@
 					)
 				)
 			)
-			(property "Description" "A microcontroller by Raspberry Pi, dual CPU architecture (ARM Cortex-M33 / RISC-V Hazard3), 150MHz, 2MB flash, 520KB SRAM, 12 PIO state machines, VQFN-60"
+			(property "Description" "A microcontroller by Raspberry Pi, dual CPU architecture (ARM Cortex-M33 / RISC-V Hazard3), 150MHz, no flash, 520KB SRAM, 12 PIO state machines, VQFN-60"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1996,7 +2184,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "RPi Pico USB QSPI I2C UART ADC SC1511"
+			(property "ki_keywords" "RPi Pico USB QSPI I2C UART ADC SC1509"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -2018,7 +2206,7 @@
 					)
 				)
 			)
-			(symbol "RP2354A_0_1"
+			(symbol "RP2350A_0_1"
 				(rectangle
 					(start -21.59 41.91)
 					(end 21.59 -41.91)
@@ -2031,7 +2219,7 @@
 					)
 				)
 			)
-			(symbol "RP2354A_1_0"
+			(symbol "RP2350A_1_0"
 				(pin power_in line
 					(at 12.7 45.72 270)
 					(length 3.81)
@@ -2142,7 +2330,7 @@
 					)
 				)
 			)
-			(symbol "RP2354A_1_1"
+			(symbol "RP2350A_1_1"
 				(pin power_in line
 					(at -2.54 45.72 270)
 					(length 3.81)
@@ -3142,6 +3330,248 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Memory_Flash:W25Q16JVSS"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -6.35 11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "W25Q16JVSS"
+				(at 7.62 11.43 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.winbond.com/hq/support/documentation/levelOne.jsp?__locale=en&DocNo=DA00-W25Q16JV.1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "16Mbit / 2MiB Serial Flash Memory, Standard/Dual/Quad SPI, 2.7-3.6V, SOIC-8 (208 mil)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "flash memory SPI"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*SOIC*5.3x5.3mm*P1.27mm*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "W25Q16JVSS_0_1"
+				(rectangle
+					(start -7.62 10.16)
+					(end 10.16 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "W25Q16JVSS_1_1"
+				(pin input line
+					(at -10.16 7.62 0)
+					(length 2.54)
+					(name "~{CS}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 0 0)
+					(length 2.54)
+					(name "DO/IO_{1}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 -2.54 0)
+					(length 2.54)
+					(name "~{WP}/IO_{2}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -12.7 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 2.54 0)
+					(length 2.54)
+					(name "DI/IO_{0}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -10.16 5.08 0)
+					(length 2.54)
+					(name "CLK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 -5.08 0)
+					(length 2.54)
+					(name "~{HOLD}/~{RESET}/IO_{3}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 12.7 270)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Regulator_Linear:AMS1117-3.3"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3449,6 +3879,167 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "macropad:X6511FRS-04-C85D30"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "X6511FRS-04-C85D30"
+				(at -2.54 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "macropad:X6511FRS-04-C85D30"
+				(at -2.54 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2208221800_XKB-Connection-X6511FRS-04-C85D30_C5142237.pdf"
+				(at 0 -15.24 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at -2.54 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "LCSC Part #" "C5142237"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "X6511FRS-04-C85D30_1_1"
+				(rectangle
+					(start 0 0)
+					(end 2.54 -12.7)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -2.54 -2.54 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 -5.08 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 -7.62 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 -10.16 0)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4311,20 +4902,16 @@
 		(uuid "feb45daf-c246-42c6-bf6b-8f268621ba14")
 	)
 	(no_connect
+		(at 179.07 114.3)
+		(uuid "0477544c-9699-433d-8eaa-d8266cdbdca2")
+	)
+	(no_connect
 		(at 179.07 142.24)
 		(uuid "066f2407-fa06-49e2-acdd-192e03200ad2")
 	)
 	(no_connect
 		(at 179.07 147.32)
 		(uuid "2cf3e998-304c-4d54-9e4e-80af830eab5e")
-	)
-	(no_connect
-		(at 128.27 124.46)
-		(uuid "2d22ea2b-d937-4a3a-b512-95c90480b199")
-	)
-	(no_connect
-		(at 179.07 124.46)
-		(uuid "36e00597-91dd-4c8e-89a6-0de96ae00705")
 	)
 	(no_connect
 		(at 179.07 86.36)
@@ -4335,12 +4922,20 @@
 		(uuid "40cab24c-9b3e-4a4f-97b5-05f652e03029")
 	)
 	(no_connect
+		(at 179.07 132.08)
+		(uuid "4e28ea91-deb2-4520-9c86-97e799376b73")
+	)
+	(no_connect
 		(at 267.97 27.94)
 		(uuid "52c95f94-9df2-45f1-bff2-20517c3ba815")
 	)
 	(no_connect
 		(at 179.07 154.94)
 		(uuid "6643d7da-077b-452e-bf2b-e802beaa4249")
+	)
+	(no_connect
+		(at 179.07 137.16)
+		(uuid "66458f0d-3743-4b09-ad96-d81b2c127c1d")
 	)
 	(no_connect
 		(at 179.07 139.7)
@@ -4359,52 +4954,16 @@
 		(uuid "8f6b9cf0-e3d6-4e8f-8ac2-b717b36ad023")
 	)
 	(no_connect
-		(at 179.07 114.3)
-		(uuid "9d257df2-95a1-4cde-bb64-0be52348a5b9")
-	)
-	(no_connect
-		(at 179.07 119.38)
-		(uuid "9d732683-fd97-411e-8f96-c8dd4b37236f")
-	)
-	(no_connect
 		(at 179.07 149.86)
 		(uuid "a2f540e3-c73e-4fc9-9cd4-2447e9949350")
 	)
 	(no_connect
-		(at 179.07 121.92)
-		(uuid "af4b09ea-cb0d-4128-8893-7cc91f88eda4")
-	)
-	(no_connect
-		(at 179.07 127)
-		(uuid "b5fbfe95-aebb-4d4b-b9d8-6870091abc50")
-	)
-	(no_connect
-		(at 179.07 111.76)
-		(uuid "b633ec86-607b-41a4-929a-1d457a4c365d")
-	)
-	(no_connect
-		(at 179.07 78.74)
+		(at 179.07 119.38)
 		(uuid "bbaf7af5-c1f2-49b7-b0a9-41d15eacd6ab")
 	)
 	(no_connect
-		(at 128.27 121.92)
-		(uuid "c7a7290f-36e7-416c-b1ed-f26b98f9c736")
-	)
-	(no_connect
-		(at 128.27 119.38)
-		(uuid "d38a0bb1-055d-4e5d-9584-d0d54640e4ce")
-	)
-	(no_connect
-		(at 128.27 114.3)
-		(uuid "d9e58fe8-69a3-45cb-9496-7160138d05a1")
-	)
-	(no_connect
-		(at 179.07 137.16)
-		(uuid "e3ac6864-8740-4814-a1f5-a7d8954414b0")
-	)
-	(no_connect
-		(at 128.27 116.84)
-		(uuid "edda5687-7abc-4725-b127-06ff0205d077")
+		(at 179.07 134.62)
+		(uuid "d5b9c98d-7b99-4447-b3b3-5db2ca7d14bf")
 	)
 	(no_connect
 		(at 179.07 152.4)
@@ -4415,11 +4974,11 @@
 		(uuid "f050c073-3e4b-429b-bca3-cfd119819945")
 	)
 	(no_connect
-		(at 179.07 83.82)
+		(at 179.07 124.46)
 		(uuid "f699259a-2c6e-4fd0-bf4a-dc829a4848bf")
 	)
 	(no_connect
-		(at 179.07 116.84)
+		(at 179.07 121.92)
 		(uuid "fd43021d-c21e-4447-832e-7718e6ae2ed7")
 	)
 	(wire
@@ -4434,6 +4993,16 @@
 	)
 	(wire
 		(pts
+			(xy 246.38 95.25) (xy 246.38 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "026c65ca-dcca-4884-b921-0ef034e8b7bc")
+	)
+	(wire
+		(pts
 			(xy 46.99 148.59) (xy 46.99 152.4)
 		)
 		(stroke
@@ -4441,6 +5010,26 @@
 			(type default)
 		)
 		(uuid "02900224-8ca8-496e-b8fc-03f25b1ad7ae")
+	)
+	(wire
+		(pts
+			(xy 120.65 114.3) (xy 128.27 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "053bf13f-5e03-4293-9cad-bb534525808d")
+	)
+	(wire
+		(pts
+			(xy 262.89 139.7) (xy 267.97 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06b1cd92-9560-43bc-8139-26872aad7d63")
 	)
 	(wire
 		(pts
@@ -4464,6 +5053,16 @@
 	)
 	(wire
 		(pts
+			(xy 220.98 156.21) (xy 220.98 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0efcbb2b-7177-43e0-8bcf-1f7318156aa2")
+	)
+	(wire
+		(pts
 			(xy 139.7 176.53) (xy 152.4 176.53)
 		)
 		(stroke
@@ -4471,6 +5070,26 @@
 			(type default)
 		)
 		(uuid "10fa795a-0126-4187-8ace-c60f0349a378")
+	)
+	(wire
+		(pts
+			(xy 217.17 90.17) (xy 209.55 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12370c47-9689-4522-8c46-eb31b9e9c48d")
+	)
+	(wire
+		(pts
+			(xy 120.65 121.92) (xy 128.27 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1270c1a5-b8d1-4cd8-b64c-d31d336f9a3e")
 	)
 	(wire
 		(pts
@@ -4534,6 +5153,16 @@
 	)
 	(wire
 		(pts
+			(xy 115.57 111.76) (xy 128.27 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "203c674b-90ab-4db8-9260-8cbf2c873850")
+	)
+	(wire
+		(pts
 			(xy 101.6 179.07) (xy 101.6 176.53)
 		)
 		(stroke
@@ -4574,6 +5203,16 @@
 	)
 	(wire
 		(pts
+			(xy 246.38 102.87) (xy 246.38 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26b177ec-dbdb-4cf1-92c4-95d791b94ace")
+	)
+	(wire
+		(pts
 			(xy 38.1 187.96) (xy 50.8 187.96)
 		)
 		(stroke
@@ -4601,6 +5240,16 @@
 			(type default)
 		)
 		(uuid "2b6ba706-6065-4eec-b1e4-5130f7d4109d")
+	)
+	(wire
+		(pts
+			(xy 217.17 97.79) (xy 209.55 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2bbe4542-6910-4362-b040-f53c8b39a971")
 	)
 	(wire
 		(pts
@@ -4754,6 +5403,16 @@
 	)
 	(wire
 		(pts
+			(xy 120.65 124.46) (xy 128.27 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "48830916-1857-46cb-9f42-6bafd4e59460")
+	)
+	(wire
+		(pts
 			(xy 127 187.96) (xy 139.7 187.96)
 		)
 		(stroke
@@ -4764,6 +5423,26 @@
 	)
 	(wire
 		(pts
+			(xy 205.74 144.78) (xy 200.66 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "497607f2-4356-4c9c-bee0-3a01019ff708")
+	)
+	(wire
+		(pts
+			(xy 262.89 144.78) (xy 267.97 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a8e1b80-b839-446e-9224-398997e74858")
+	)
+	(wire
+		(pts
 			(xy 63.5 187.96) (xy 76.2 187.96)
 		)
 		(stroke
@@ -4771,6 +5450,26 @@
 			(type default)
 		)
 		(uuid "4d35ecad-a575-4cc7-afc4-20a7cc153c2d")
+	)
+	(wire
+		(pts
+			(xy 179.07 78.74) (xy 182.88 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5051f8aa-c83f-4d33-9dac-72f58f792050")
+	)
+	(wire
+		(pts
+			(xy 205.74 142.24) (xy 200.66 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "517a3489-632e-4619-899d-db59459398e1")
 	)
 	(wire
 		(pts
@@ -4824,6 +5523,16 @@
 	)
 	(wire
 		(pts
+			(xy 120.65 116.84) (xy 128.27 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59267e2c-1a1e-489d-8eec-41e91a35ad29")
+	)
+	(wire
+		(pts
 			(xy 88.9 187.96) (xy 101.6 187.96)
 		)
 		(stroke
@@ -4864,6 +5573,16 @@
 	)
 	(wire
 		(pts
+			(xy 179.07 116.84) (xy 182.88 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65b56fe5-1020-4dfe-b12f-ac2906601cea")
+	)
+	(wire
+		(pts
 			(xy 139.7 179.07) (xy 139.7 176.53)
 		)
 		(stroke
@@ -4891,6 +5610,16 @@
 			(type default)
 		)
 		(uuid "6f3ca375-2ef3-4c45-a52b-b37be5768d93")
+	)
+	(wire
+		(pts
+			(xy 205.74 139.7) (xy 200.66 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6fda28ce-cdcf-497d-93b1-85a8ec268fc7")
 	)
 	(wire
 		(pts
@@ -4974,6 +5703,16 @@
 	)
 	(wire
 		(pts
+			(xy 223.52 156.21) (xy 223.52 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c88af9c-9196-4800-8bc1-ec9b4a628832")
+	)
+	(wire
+		(pts
 			(xy 76.2 109.22) (xy 76.2 114.3)
 		)
 		(stroke
@@ -4981,6 +5720,16 @@
 			(type default)
 		)
 		(uuid "7f9383c0-9f4f-475e-910f-21d11a5cd0ea")
+	)
+	(wire
+		(pts
+			(xy 226.06 156.21) (xy 226.06 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "85e3fa3a-0fd5-462e-9465-0a857e9ab940")
 	)
 	(wire
 		(pts
@@ -5014,6 +5763,16 @@
 	)
 	(wire
 		(pts
+			(xy 217.17 100.33) (xy 209.55 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b4a3703-bbfc-4530-98dd-4f58547ffacc")
+	)
+	(wire
+		(pts
 			(xy 139.7 187.96) (xy 152.4 187.96)
 		)
 		(stroke
@@ -5021,6 +5780,16 @@
 			(type default)
 		)
 		(uuid "8b7d5951-d603-41cd-915d-5b41a84d3ae6")
+	)
+	(wire
+		(pts
+			(xy 217.17 102.87) (xy 209.55 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c9b3564-a379-4e55-a44d-0ae66356c37a")
 	)
 	(wire
 		(pts
@@ -5061,6 +5830,16 @@
 			(type default)
 		)
 		(uuid "9ab4bbac-6b74-418c-b9b8-0c877120d0e0")
+	)
+	(wire
+		(pts
+			(xy 217.17 92.71) (xy 209.55 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ae28bae-7e27-4e1d-9593-1f2c199fbb21")
 	)
 	(wire
 		(pts
@@ -5114,6 +5893,26 @@
 	)
 	(wire
 		(pts
+			(xy 262.89 137.16) (xy 267.97 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a60ef7b4-679f-47fc-8280-dac83c5b62f3")
+	)
+	(wire
+		(pts
+			(xy 262.89 142.24) (xy 267.97 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a68e6f65-65d3-430c-b998-60b82c59be7c")
+	)
+	(wire
+		(pts
 			(xy 38.1 101.6) (xy 50.8 101.6)
 		)
 		(stroke
@@ -5121,6 +5920,16 @@
 			(type default)
 		)
 		(uuid "a780675f-dd50-4e57-885c-c39fcfa58ea4")
+	)
+	(wire
+		(pts
+			(xy 179.07 129.54) (xy 182.88 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab93497e-36bf-4e29-ab66-40cac45540b3")
 	)
 	(wire
 		(pts
@@ -5144,6 +5953,16 @@
 	)
 	(wire
 		(pts
+			(xy 120.65 119.38) (xy 128.27 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b0e98d7e-79dc-440f-83de-42148799f425")
+	)
+	(wire
+		(pts
 			(xy 34.29 161.29) (xy 21.59 161.29)
 		)
 		(stroke
@@ -5161,6 +5980,16 @@
 			(type default)
 		)
 		(uuid "b3b43e2f-95a4-43b8-8425-6cbc78c3f56c")
+	)
+	(wire
+		(pts
+			(xy 179.07 83.82) (xy 182.88 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b3fc147c-00ec-4b76-a5db-94cb49f2f13b")
 	)
 	(wire
 		(pts
@@ -5214,6 +6043,16 @@
 	)
 	(wire
 		(pts
+			(xy 179.07 111.76) (xy 182.88 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc425073-7a4c-4bbb-8884-18c8f1ca9759")
+	)
+	(wire
+		(pts
 			(xy 107.95 142.24) (xy 120.65 142.24)
 		)
 		(stroke
@@ -5254,6 +6093,16 @@
 	)
 	(wire
 		(pts
+			(xy 227.33 85.09) (xy 227.33 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c671dd51-2e38-4fc8-a3aa-21e5c30f2b88")
+	)
+	(wire
+		(pts
 			(xy 63.5 109.22) (xy 63.5 114.3)
 		)
 		(stroke
@@ -5274,6 +6123,26 @@
 	)
 	(wire
 		(pts
+			(xy 227.33 110.49) (xy 227.33 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8ee4a89-8f64-470e-8108-21569c129d3b")
+	)
+	(wire
+		(pts
+			(xy 179.07 127) (xy 182.88 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8f005e9-d16b-4158-be93-72fd257f9b11")
+	)
+	(wire
+		(pts
 			(xy 101.6 186.69) (xy 101.6 187.96)
 		)
 		(stroke
@@ -5281,6 +6150,16 @@
 			(type default)
 		)
 		(uuid "ce9896b1-0d02-4025-87b6-d569ebad3ad6")
+	)
+	(wire
+		(pts
+			(xy 218.44 156.21) (xy 218.44 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cfadc2f5-be94-4316-9944-712e0b0dcf82")
 	)
 	(wire
 		(pts
@@ -5294,6 +6173,16 @@
 	)
 	(wire
 		(pts
+			(xy 217.17 95.25) (xy 209.55 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d2bfc497-e24c-42db-98d1-b8a9a499a219")
+	)
+	(wire
+		(pts
 			(xy 50.8 101.6) (xy 63.5 101.6)
 		)
 		(stroke
@@ -5301,6 +6190,16 @@
 			(type default)
 		)
 		(uuid "d8288544-8b1e-4935-a1a9-a402ba5ad3f4")
+	)
+	(wire
+		(pts
+			(xy 205.74 137.16) (xy 200.66 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8ad68a7-c864-4824-b08a-bf9f4164fe30")
 	)
 	(wire
 		(pts
@@ -5482,6 +6381,96 @@
 		)
 		(uuid "04dc6adf-4643-403f-8d33-bf6e5b03e1b8")
 	)
+	(label "QSPI_SD1"
+		(at 120.65 119.38 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "065a3a57-71c4-4f70-88cb-7790acc3a27a")
+	)
+	(label "SPI_MISO"
+		(at 182.88 78.74 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "0746587f-aeba-4cb0-910e-8ca260886cdf")
+	)
+	(label "SPI_CS"
+		(at 182.88 116.84 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "08456910-9ed3-4e2a-b9ba-abbf6a75bb18")
+	)
+	(label "GPIO13"
+		(at 200.66 142.24 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "09329eb3-e368-425a-ae93-ccab107d1d12")
+	)
+	(label "QSPI_SD3"
+		(at 120.65 124.46 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1fac9305-d672-4f00-98f2-6264cebf6d54")
+	)
+	(label "SPI_MOSI"
+		(at 182.88 127 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "34606fa9-3d1c-4e51-b9d3-a4921dce7ce6")
+	)
+	(label "QSPI_SCLK"
+		(at 120.65 114.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "36a8753c-7dd7-46cb-ab9b-d09372a983a1")
+	)
+	(label "SPI_MISO"
+		(at 226.06 161.29 90)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "3af77304-7adb-4b78-aa5a-e310db4bd444")
+	)
+	(label "QSPI_SD2"
+		(at 120.65 121.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3f8476f3-e4b0-455e-9370-37f8742f017c")
+	)
 	(label "SW6"
 		(at 179.07 109.22 0)
 		(effects
@@ -5492,15 +6481,15 @@
 		)
 		(uuid "401e98dd-c97a-4874-8e2a-0168d6c9b53f")
 	)
-	(label "Sclk"
-		(at 179.07 132.08 0)
+	(label "+3.3V"
+		(at 246.38 92.71 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "44364e68-899b-4399-9dc9-2b3b865b9be3")
+		(uuid "4423af65-4b61-499d-a5a0-8b87a335ae2e")
 	)
 	(label "SW1"
 		(at 25.4 111.76 0)
@@ -5511,6 +6500,46 @@
 			(justify left bottom)
 		)
 		(uuid "44db30ad-af8e-4341-8378-a8aa26370045")
+	)
+	(label "SDA"
+		(at 267.97 144.78 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right bottom)
+		)
+		(uuid "4afed5c9-69ac-47be-bea4-c681906ca69b")
+	)
+	(label "QSPI_SD2"
+		(at 209.55 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5629bf8c-78ae-4056-8602-06979786ce27")
+	)
+	(label "SPI_CS"
+		(at 223.52 161.29 90)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "58bbb39a-d559-4bb2-b082-ecf99ea5d847")
+	)
+	(label "QSPI_SD1"
+		(at 209.55 97.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "591ac724-d966-406d-b9ad-88e18edd0ed2")
 	)
 	(label "SW3"
 		(at 50.8 111.76 0)
@@ -5532,6 +6561,26 @@
 		)
 		(uuid "5a695d6d-9c41-43cc-9fc5-59d3dfd00c22")
 	)
+	(label "+3.3V"
+		(at 227.33 82.55 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5ef5596d-e8f5-48bb-bce6-5aeee65edaf7")
+	)
+	(label "SPI_SCK"
+		(at 220.98 161.29 90)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "62e2b3f3-63a7-4d3c-b696-650d23874f16")
+	)
 	(label "SW2"
 		(at 179.07 99.06 0)
 		(effects
@@ -5541,6 +6590,26 @@
 			(justify left bottom)
 		)
 		(uuid "685ed8da-80bf-46ac-b436-3ce83a58668c")
+	)
+	(label "SPI_MOSI"
+		(at 218.44 161.29 90)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "69bb7200-94c2-42a7-8e96-be0ed53d6fa6")
+	)
+	(label "QSPI_SD3"
+		(at 209.55 102.87 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6d26c2f7-72ba-47e4-8d49-4c3864be64cc")
 	)
 	(label "SDA"
 		(at 179.07 88.9 0)
@@ -5552,15 +6621,15 @@
 		)
 		(uuid "6dd4be59-76d3-41d3-bdf5-fda3e140fb50")
 	)
-	(label "ser"
-		(at 179.07 129.54 0)
+	(label "GPIO13"
+		(at 182.88 111.76 0)
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 1 1)
 			)
 			(justify left bottom)
 		)
-		(uuid "6fb92bbf-2d1a-4f38-a6b9-93b9d66c179b")
+		(uuid "70232345-e0b2-4d9e-8f69-43730db1f19f")
 	)
 	(label "SCL"
 		(at 241.3 57.15 180)
@@ -5572,16 +6641,6 @@
 		)
 		(uuid "7109ad7d-f816-4e94-87cf-7a5edaa9e850")
 	)
-	(label "Rclk"
-		(at 179.07 134.62 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7815a449-4a31-49a9-a897-5bf3e8a761a2")
-	)
 	(label "SW2"
 		(at 38.1 111.76 0)
 		(effects
@@ -5591,6 +6650,16 @@
 			(justify left bottom)
 		)
 		(uuid "7a73140d-6b7d-41ec-ae1c-072ccc022c4b")
+	)
+	(label "QSPI_SS"
+		(at 120.65 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "83d3853e-a11f-4b88-be68-ccd7c1d16413")
 	)
 	(label "SW3"
 		(at 179.07 101.6 0)
@@ -5612,6 +6681,26 @@
 		)
 		(uuid "89be0a31-3994-457b-b7e8-1f145c88a603")
 	)
+	(label "GPIO20"
+		(at 200.66 144.78 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "93b6156f-7ca1-44a4-872a-1733418bc953")
+	)
+	(label "SPI_SCK"
+		(at 182.88 83.82 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "9c50f24f-18c9-497e-9b19-6062e3e72c82")
+	)
 	(label "DN"
 		(at 128.27 101.6 180)
 		(effects
@@ -5621,6 +6710,16 @@
 			(justify right bottom)
 		)
 		(uuid "9e1ab45f-60ce-413f-9989-3c6a011aa09b")
+	)
+	(label "GPIO20"
+		(at 182.88 129.54 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "a1e03b77-424f-4241-b860-8678bc0f164e")
 	)
 	(label "DN"
 		(at 53.34 36.83 0)
@@ -5652,6 +6751,16 @@
 		)
 		(uuid "adfee7bf-4df4-4c6b-b975-4bb0274de774")
 	)
+	(label "QSPI_SD0"
+		(at 120.65 116.84 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "af28400e-cb3b-4607-8498-973d3160c72d")
+	)
 	(label "SW5"
 		(at 76.2 111.76 0)
 		(effects
@@ -5682,6 +6791,16 @@
 		)
 		(uuid "d315d648-914d-40bc-ac6f-ca561649cbf9")
 	)
+	(label "GND"
+		(at 246.38 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d40647a0-1374-4431-b2b2-91aa81ee7d37")
+	)
 	(label "SW4"
 		(at 179.07 104.14 0)
 		(effects
@@ -5702,6 +6821,46 @@
 		)
 		(uuid "d78b6caf-4c20-4ecd-8bd5-c46ae2dc8c67")
 	)
+	(label "GND"
+		(at 227.33 113.03 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "da05d10b-8bea-4059-ac93-ddf1d89cb631")
+	)
+	(label "QSPI_SCLK"
+		(at 209.55 92.71 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dd99eb59-b747-4494-8ef3-2309e3265d19")
+	)
+	(label "SCL"
+		(at 267.97 142.24 180)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right bottom)
+		)
+		(uuid "e6e8d186-d995-45d2-987c-5ae9cdd5dc63")
+	)
+	(label "QSPI_SS"
+		(at 209.55 90.17 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "eb70a13f-728b-43e7-baea-ac2a6ae16931")
+	)
 	(label "LEDin"
 		(at 179.07 93.98 0)
 		(effects
@@ -5711,6 +6870,16 @@
 			(justify left bottom)
 		)
 		(uuid "f16bc9ef-cfb5-4ae7-9ef8-423a3232c5fe")
+	)
+	(label "QSPI_SD0"
+		(at 209.55 95.25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fbbc864e-b437-42a3-8a5d-b0efe8fb109f")
 	)
 	(label "SCL"
 		(at 179.07 91.44 0)
@@ -5792,7 +6961,7 @@
 			(uuid "db41c4db-8eae-4838-bde8-e542b84ed3e7")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR029")
 					(unit 1)
@@ -5802,7 +6971,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 118.11 115.57 0)
+		(at 105.41 115.57 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5813,7 +6982,7 @@
 		(fields_autoplaced yes)
 		(uuid "03043045-aa32-4104-88b6-e26b48524805")
 		(property "Reference" "R11"
-			(at 120.65 114.2999 0)
+			(at 107.95 114.2999 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5824,7 +6993,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 120.65 116.8399 0)
+			(at 107.95 116.8399 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5835,7 +7004,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 116.332 115.57 90)
+			(at 103.632 115.57 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5846,7 +7015,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 118.11 115.57 0)
+			(at 105.41 115.57 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5857,7 +7026,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 118.11 115.57 0)
+			(at 105.41 115.57 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5874,7 +7043,7 @@
 			(uuid "f9845d09-91c7-4994-b011-8b99192bef4a")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R11")
 					(unit 1)
@@ -5948,7 +7117,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 34.29 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 34.29 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 34.29 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -5999,7 +7190,7 @@
 			(uuid "7f4e2dc1-3683-47e8-82d1-1965bdfb4c61")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C27")
 					(unit 1)
@@ -6077,7 +7268,7 @@
 			(uuid "c37c7e12-763f-41e7-8ea7-100423497a45")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR014")
 					(unit 1)
@@ -6159,7 +7350,7 @@
 			(uuid "b5f96718-2aa2-4f7a-adba-3038cbfa8423")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R1")
 					(unit 1)
@@ -6237,7 +7428,7 @@
 			(uuid "f4b2dde4-454e-478a-b1c0-7791803a8fe6")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR022")
 					(unit 1)
@@ -6341,9 +7532,88 @@
 			(uuid "c3dd9c0a-4310-4bc6-9694-322aa8991c85")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 267.97 137.16 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0bba5edb-9267-40e4-bbf6-eb7aa55d851d")
+		(property "Reference" "#PWR034"
+			(at 264.16 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 271.78 137.1599 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 267.97 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 267.97 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 267.97 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a1f9e694-35f9-4e80-a3c4-b03841b3ca25")
+		)
+		(instances
+			(project "macropad"
+				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
@@ -6419,7 +7689,7 @@
 			(uuid "d58e37fa-6c7c-4002-a70c-38b7b3fd9a86")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR026")
 					(unit 1)
@@ -6501,7 +7771,7 @@
 			(uuid "0e9388c1-4efb-4fce-a12b-c098a99ddb74")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R7")
 					(unit 1)
@@ -6579,9 +7849,108 @@
 			(uuid "74f461a5-e546-450d-b96f-8fa7eb40b715")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "macropad:X6511FRS-04-C85D30")
+		(at 208.28 134.62 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "19f0a2ab-d7f1-4db6-b196-b535ad371d9b")
+		(property "Reference" "J4"
+			(at 212.09 139.6999 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "X6511FRS-04-C85D30"
+			(at 212.09 142.2399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "macropad:X6511FRS-04-C85D30"
+			(at 205.74 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2208221800_XKB-Connection-X6511FRS-04-C85D30_C5142237.pdf"
+			(at 208.28 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 205.74 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C5142237"
+			(at 208.28 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4cc96888-d62f-4963-860f-0c398ed4bf0b")
+		)
+		(pin "2"
+			(uuid "1188aa24-36eb-4da4-8687-15e07565f0a3")
+		)
+		(pin "3"
+			(uuid "36ab9ceb-b75e-4900-877b-e377d85c2442")
+		)
+		(pin "4"
+			(uuid "e546659f-8f3e-4b50-806a-5acaceb44d07")
+		)
+		(instances
+			(project "macropad"
+				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
+					(reference "J4")
 					(unit 1)
 				)
 			)
@@ -6657,7 +8026,7 @@
 			(uuid "1a23505e-f479-4496-8192-3da4f075de79")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR031")
 					(unit 1)
@@ -6731,7 +8100,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 127 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 127 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 127 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -6782,7 +8173,7 @@
 			(uuid "7817b610-9c58-4c0e-87a7-a9467630e7ce")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C39")
 					(unit 1)
@@ -6884,7 +8275,7 @@
 			(uuid "fb5e5153-0e95-4e66-9743-a580b97809e1")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C4")
 					(unit 1)
@@ -7005,7 +8396,7 @@
 			(uuid "1e1dbc65-995d-46c4-a628-9496802cacbd")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "D2")
 					(unit 1)
@@ -7047,7 +8438,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Display:ER_OLEDM0.91_1x-I2C"
+		(property "Footprint" "macropad:ER_OLEDM0.91_1x-I2C_Staggered_Offset0.175mm"
 			(at 269.494 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -7093,9 +8484,88 @@
 			(uuid "67c19da2-28b0-48b6-8307-014b95558603")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 267.97 139.7 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2b7af72d-2f16-4b30-a3e7-482a3d6c6516")
+		(property "Reference" "#PWR033"
+			(at 274.32 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 271.78 139.6999 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 267.97 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 267.97 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 267.97 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d82823fb-ba6a-4c52-af5a-d99e8e333826")
+		)
+		(instances
+			(project "macropad"
+				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -7167,7 +8637,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 114.3 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 114.3 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 114.3 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -7218,7 +8710,7 @@
 			(uuid "f9fb5708-0835-4360-aa3b-a273a6d620c3")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C38")
 					(unit 1)
@@ -7249,7 +8741,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "CPG151101S11-16"
 			(at 39.37 120.6499 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7271,7 +8763,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C41430893.pdf"
 			(at 33.02 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -7282,8 +8774,63 @@
 				)
 			)
 		)
-		(property "Description" "Push button switch, generic, two pins"
+		(property "Description" "MX hot-swap socket, HanElectricity CPG151101S11-16"
 			(at 38.1 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C41430893"
+			(at 33.02 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Layer Override" "bottom"
+			(at 33.02 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Position Offset" "-0.635,-3.81"
+			(at 33.02 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "HanElectricity"
+			(at 33.02 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CPG151101S11-16"
+			(at 33.02 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7300,7 +8847,7 @@
 			(uuid "2ceb8e40-c688-4989-92dc-bf5f2ca9e1dd")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "SW2")
 					(unit 1)
@@ -7378,7 +8925,7 @@
 			(uuid "64e9e17d-512d-4ca4-aa6e-bf5db394ef91")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR08")
 					(unit 1)
@@ -7456,7 +9003,7 @@
 			(uuid "7e6b9771-324b-486e-a879-acc67f07cb51")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR025")
 					(unit 1)
@@ -7534,7 +9081,7 @@
 			(uuid "bd2aa144-f2a9-4383-93eb-d1e02b605183")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR042")
 					(unit 1)
@@ -7612,7 +9159,7 @@
 			(uuid "cbbff22e-1438-40d8-a414-28128dd1a123")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR020")
 					(unit 1)
@@ -7694,7 +9241,7 @@
 			(uuid "46cd2723-7a1e-4380-872d-aa019cd6b299")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R2")
 					(unit 1)
@@ -7798,7 +9345,7 @@
 			(uuid "cd7df32d-43d3-4089-a041-f84cd6b9d810")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C2")
 					(unit 1)
@@ -7876,7 +9423,7 @@
 			(uuid "9bfcfccc-dd72-4d29-9ab3-aa94799b44e4")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR010")
 					(unit 1)
@@ -7980,7 +9527,7 @@
 			(uuid "7f8f2d22-236f-40eb-adbc-600c79a92f13")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C5")
 					(unit 1)
@@ -8058,9 +9605,120 @@
 			(uuid "1bbc2ef1-1cf5-4627-83a3-f77c760c2901")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 246.38 99.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4a33c479-5034-4b07-87af-8614057e021f")
+		(property "Reference" "C42"
+			(at 252.984 98.044 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 252.984 100.584 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 246.38 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C155422.pdf"
+			(at 246.38 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 246.38 99.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C155422"
+			(at 246.38 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 246.38 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CL05B104KA5NNNC"
+			(at 246.38 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f68c5858-a701-473f-be0a-f64361394a1e")
+		)
+		(pin "2"
+			(uuid "0cc8bc8f-b5c9-47a6-930f-e6bfac072add")
+		)
+		(instances
+			(project "macropad"
+				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
+					(reference "C42")
 					(unit 1)
 				)
 			)
@@ -8201,7 +9859,7 @@
 			(uuid "07b2b30f-f722-4b83-b09d-88d09b6a4631")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "Y2")
 					(unit 1)
@@ -8322,7 +9980,7 @@
 			(uuid "3265b4d1-2df8-4f7d-9373-ace73fa2a045")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "D3")
 					(unit 1)
@@ -8404,7 +10062,7 @@
 			(uuid "76a79cdd-6605-4dc8-adbe-3caaedbf28a3")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R6")
 					(unit 1)
@@ -8413,7 +10071,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "Device:C_Polarized")
 		(at 46.99 81.28 0)
 		(unit 1)
 		(body_style 1)
@@ -8541,7 +10199,7 @@
 			(uuid "5b0916f1-c3bd-4115-86ea-8a80ada323ac")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C1")
 					(unit 1)
@@ -8615,7 +10273,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 88.9 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 88.9 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 88.9 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -8666,7 +10346,7 @@
 			(uuid "a213a7f5-3ca0-4a82-92fa-ca2a091a615d")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C36")
 					(unit 1)
@@ -8740,7 +10420,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 60.96 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 60.96 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 60.96 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -8791,7 +10493,7 @@
 			(uuid "950ed741-13c1-43a6-8afd-c85ef0df0ee1")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C30")
 					(unit 1)
@@ -8865,7 +10567,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 63.5 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 63.5 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 63.5 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -8916,7 +10640,7 @@
 			(uuid "36fc5f36-a253-4f77-b45b-913c309b5eaf")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C34")
 					(unit 1)
@@ -8996,7 +10720,7 @@
 			(uuid "d9b323f6-9046-4dee-bb3e-27e9affb324e")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R3")
 					(unit 1)
@@ -9074,7 +10798,7 @@
 			(uuid "03bc2d74-381d-4a74-84b3-05b079a98cb8")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR018")
 					(unit 1)
@@ -9152,7 +10876,7 @@
 			(uuid "1f66cd17-68f9-483c-b799-e0805b7d0c92")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR03")
 					(unit 1)
@@ -9230,7 +10954,7 @@
 			(uuid "e5d39c58-69d6-449f-bf3a-5ce121cf9808")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR06")
 					(unit 1)
@@ -9308,9 +11032,106 @@
 			(uuid "93cd8287-ef83-49c1-9a6c-45d8b0d4c3c5")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR027")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "macropad:X6511FRS-04-C85D30")
+		(at 260.35 147.32 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "750eb39e-e3dd-487f-b034-142a4fc28f31")
+		(property "Reference" "J5"
+			(at 259.08 129.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "X6511FRS-04-C85D30"
+			(at 259.08 132.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "macropad:X6511FRS-04-C85D30"
+			(at 262.89 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2208221800_XKB-Connection-X6511FRS-04-C85D30_C5142237.pdf"
+			(at 260.35 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 262.89 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C5142237"
+			(at 260.35 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "257fd210-f3da-4065-a9eb-a89dfa7e1f60")
+		)
+		(pin "2"
+			(uuid "b1d7e910-f047-457d-86d3-a432081b56b7")
+		)
+		(pin "3"
+			(uuid "f94e7df4-d39e-47e9-9098-8586e2e84120")
+		)
+		(pin "4"
+			(uuid "d346448d-cbd8-4a10-9a02-1a086daff9e9")
+		)
+		(instances
+			(project "macropad"
+				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
+					(reference "J5")
 					(unit 1)
 				)
 			)
@@ -9382,7 +11203,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 50.8 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 50.8 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 50.8 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -9433,9 +11276,139 @@
 			(uuid "09661bfd-214f-47c2-af14-b2e0a3e824cd")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C29")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Memory_Flash:W25Q16JVSS")
+		(at 227.33 97.79 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7829ea1b-b11a-471e-a014-5b79981c851d")
+		(property "Reference" "U4"
+			(at 220.98 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "W25Q16JVSNIQ"
+			(at 242.57 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 227.33 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C2456211.pdf"
+			(at 227.33 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "16 Mbit / 2 MB 3.3 V Quad SPI NOR flash, SOIC-8 150 mil"
+			(at 227.33 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C2456211"
+			(at 227.33 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Winbond"
+			(at 227.33 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "W25Q16JVSNIQ"
+			(at 227.33 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3deba960-afbe-49cc-9d28-d395b5b002b1")
+		)
+		(pin "2"
+			(uuid "8d78ed6f-acd0-4849-8255-4260a3ef7cfb")
+		)
+		(pin "3"
+			(uuid "2998ebcb-aa5e-4746-9af1-986c2a552f26")
+		)
+		(pin "4"
+			(uuid "aec9732d-d264-4538-b5a8-34044e8962ea")
+		)
+		(pin "5"
+			(uuid "34f8f979-80e5-4cad-9be1-f1c510549497")
+		)
+		(pin "6"
+			(uuid "3dc703d5-f439-4f4a-b5de-b1f91e90adb7")
+		)
+		(pin "7"
+			(uuid "24bb6ebf-8c0c-48c4-8161-8ea3c39d8bd1")
+		)
+		(pin "8"
+			(uuid "bd8ea54d-5f5c-4a7d-a7f6-c50b3f4c3bf9")
+		)
+		(instances
+			(project "macropad"
+				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
+					(reference "U4")
 					(unit 1)
 				)
 			)
@@ -9511,7 +11484,7 @@
 			(uuid "99c83e49-27cf-482d-a036-e5f8a9601920")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR012")
 					(unit 1)
@@ -9589,7 +11562,7 @@
 			(uuid "2bf26bfa-ffb8-4b10-a960-869d97c518ad")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR09")
 					(unit 1)
@@ -9620,7 +11593,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "CPG151101S11-16"
 			(at 64.77 120.6499 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9642,7 +11615,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C41430893.pdf"
 			(at 58.42 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -9653,8 +11626,63 @@
 				)
 			)
 		)
-		(property "Description" "Push button switch, generic, two pins"
+		(property "Description" "MX hot-swap socket, HanElectricity CPG151101S11-16"
 			(at 63.5 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C41430893"
+			(at 58.42 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Layer Override" "bottom"
+			(at 58.42 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Position Offset" "-0.635,-3.81"
+			(at 58.42 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "HanElectricity"
+			(at 58.42 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CPG151101S11-16"
+			(at 58.42 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9671,7 +11699,7 @@
 			(uuid "b46a3798-0d84-426a-a8d4-c156d3629fef")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "SW4")
 					(unit 1)
@@ -9792,7 +11820,7 @@
 			(uuid "d4aa8f8f-9a38-4e80-a510-011aa73e9878")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "D5")
 					(unit 1)
@@ -9823,7 +11851,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "CPG151101S11-16"
 			(at 77.47 120.6499 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9845,7 +11873,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C41430893.pdf"
 			(at 71.12 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -9856,8 +11884,63 @@
 				)
 			)
 		)
-		(property "Description" "Push button switch, generic, two pins"
+		(property "Description" "MX hot-swap socket, HanElectricity CPG151101S11-16"
 			(at 76.2 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C41430893"
+			(at 71.12 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Layer Override" "bottom"
+			(at 71.12 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Position Offset" "-0.635,-3.81"
+			(at 71.12 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "HanElectricity"
+			(at 71.12 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CPG151101S11-16"
+			(at 71.12 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9874,7 +11957,7 @@
 			(uuid "80542f80-d7af-4065-9d68-f049fb9d46db")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "SW5")
 					(unit 1)
@@ -9948,7 +12031,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 139.7 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 139.7 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 139.7 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -9999,7 +12104,7 @@
 			(uuid "51087300-067c-4e2c-a49f-fa2825c4c387")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C40")
 					(unit 1)
@@ -10077,7 +12182,7 @@
 			(uuid "7fe6014f-8057-4a84-958a-50df30773ca9")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR015")
 					(unit 1)
@@ -10159,7 +12264,7 @@
 			(uuid "308bed84-cc31-40ca-90a7-92645adf47c8")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R13")
 					(unit 1)
@@ -10233,7 +12338,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 152.4 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 152.4 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 152.4 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -10284,7 +12411,7 @@
 			(uuid "22c2b6e9-af82-4fa9-8dc4-e7221e299b30")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C41")
 					(unit 1)
@@ -10294,7 +12421,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 118.11 119.38 0)
+		(at 105.41 119.38 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10305,7 +12432,7 @@
 		(fields_autoplaced yes)
 		(uuid "98b6e86d-d9d1-4d5e-a27c-54de1b804810")
 		(property "Reference" "#PWR024"
-			(at 118.11 125.73 0)
+			(at 105.41 125.73 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10316,7 +12443,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 118.11 124.46 0)
+			(at 105.41 124.46 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10326,7 +12453,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 118.11 119.38 0)
+			(at 105.41 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10337,7 +12464,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 118.11 119.38 0)
+			(at 105.41 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10348,7 +12475,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 118.11 119.38 0)
+			(at 105.41 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10362,9 +12489,88 @@
 			(uuid "ae9f82fe-98ad-4f46-adf6-0a3c025a807f")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR024")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 200.66 139.7 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "98d95cc8-8bc4-4243-9a8f-b3d43379ea4b")
+		(property "Reference" "#PWR036"
+			(at 194.31 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 196.85 139.6999 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 200.66 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 200.66 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 200.66 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e697f905-56b4-4941-adaf-9ab0f21c1bb0")
+		)
+		(instances
+			(project "macropad"
+				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
+					(reference "#PWR036")
 					(unit 1)
 				)
 			)
@@ -10393,7 +12599,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "CPG151101S11-16"
 			(at 90.17 120.6499 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10415,7 +12621,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C41430893.pdf"
 			(at 83.82 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -10426,8 +12632,63 @@
 				)
 			)
 		)
-		(property "Description" "Push button switch, generic, two pins"
+		(property "Description" "MX hot-swap socket, HanElectricity CPG151101S11-16"
 			(at 88.9 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C41430893"
+			(at 83.82 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Layer Override" "bottom"
+			(at 83.82 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Position Offset" "-0.635,-3.81"
+			(at 83.82 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "HanElectricity"
+			(at 83.82 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CPG151101S11-16"
+			(at 83.82 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10444,7 +12705,7 @@
 			(uuid "363cbe66-7aa7-492f-9b1a-c07b73292be2")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "SW6")
 					(unit 1)
@@ -10524,7 +12785,7 @@
 			(uuid "2200f7a6-9ee2-4054-8bfd-536d852e68a9")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R4")
 					(unit 1)
@@ -10602,7 +12863,7 @@
 			(uuid "1684496a-ef6d-4999-9c59-63333c881d1a")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR074")
 					(unit 1)
@@ -10684,7 +12945,7 @@
 			(uuid "ca06c404-7778-4956-882e-63b4743044e0")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R8")
 					(unit 1)
@@ -10786,7 +13047,7 @@
 			(uuid "d1301181-141b-426e-bd5e-e2e4f4b5a114")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C3")
 					(unit 1)
@@ -10826,7 +13087,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_C_Receptacle_Amphenol_12401948E412A"
+		(property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
 			(at 34.29 39.37 0)
 			(hide yes)
 			(show_name no)
@@ -10837,7 +13098,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C165948.pdf"
 			(at 34.29 39.37 0)
 			(hide yes)
 			(show_name no)
@@ -10850,6 +13111,39 @@
 		)
 		(property "Description" "USB 2.0-only 16P Type-C Receptacle connector"
 			(at 30.48 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C165948"
+			(at 34.29 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Korean Hroparts Elec"
+			(at 34.29 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TYPE-C-31-M-12"
+			(at 34.29 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10911,7 +13205,7 @@
 			(uuid "ef245450-2845-49a9-83b8-18f3be5231ce")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "J1")
 					(unit 1)
@@ -10989,7 +13283,7 @@
 			(uuid "c7dbc382-cad3-4665-a4b4-cf1b0b768ae9")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR032")
 					(unit 1)
@@ -11020,7 +13314,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "CPG151101S11-16"
 			(at 52.07 120.6499 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11042,7 +13336,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C41430893.pdf"
 			(at 45.72 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -11053,8 +13347,63 @@
 				)
 			)
 		)
-		(property "Description" "Push button switch, generic, two pins"
+		(property "Description" "MX hot-swap socket, HanElectricity CPG151101S11-16"
 			(at 50.8 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C41430893"
+			(at 45.72 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Layer Override" "bottom"
+			(at 45.72 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Position Offset" "-0.635,-3.81"
+			(at 45.72 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "HanElectricity"
+			(at 45.72 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CPG151101S11-16"
+			(at 45.72 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11071,7 +13420,7 @@
 			(uuid "ef86dd97-a10b-4163-b9e3-983cee020249")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "SW3")
 					(unit 1)
@@ -11080,7 +13429,7 @@
 		)
 	)
 	(symbol
-		(lib_id "MCU_RaspberryPi:RP2354A")
+		(lib_id "MCU_RaspberryPi:RP2350A")
 		(at 153.67 116.84 0)
 		(unit 1)
 		(body_style 1)
@@ -11102,7 +13451,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "RP2354A"
+		(property "Value" "RP2350A"
 			(at 155.8133 163.83 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11135,7 +13484,40 @@
 				)
 			)
 		)
-		(property "Description" "A microcontroller by Raspberry Pi, dual CPU architecture (ARM Cortex-M33 / RISC-V Hazard3), 150MHz, 2MB flash, 520KB SRAM, 12 PIO state machines, VQFN-60"
+		(property "Description" "A microcontroller by Raspberry Pi, dual CPU architecture (ARM Cortex-M33 / RISC-V Hazard3), 150MHz, 520KB SRAM, 12 PIO state machines, VQFN-60"
+			(at 153.67 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C42411118"
+			(at 153.67 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Raspberry Pi"
+			(at 153.67 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "RP2350A"
 			(at 153.67 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -11352,7 +13734,7 @@
 			(uuid "88a4b818-d879-4621-a0c0-b1c32c0295e2")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "U1")
 					(unit 1)
@@ -11426,7 +13808,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 46.99 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 46.99 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 46.99 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -11477,7 +13881,7 @@
 			(uuid "8e0ea240-eb6f-421e-9c4a-3425ab4256eb")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C28")
 					(unit 1)
@@ -11559,7 +13963,7 @@
 			(uuid "6d840da4-4fd2-454c-a1c9-319b3f528d24")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R5")
 					(unit 1)
@@ -11637,7 +14041,7 @@
 			(uuid "6cf47049-20fe-43a8-9184-177b54ceff85")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR021")
 					(unit 1)
@@ -11715,7 +14119,7 @@
 			(uuid "a53511e7-2178-4a94-8b05-942cc7df01ff")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR019")
 					(unit 1)
@@ -11793,7 +14197,7 @@
 			(uuid "664478b8-33b9-48f3-9385-f73a563547c0")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR02")
 					(unit 1)
@@ -11867,7 +14271,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 76.2 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 76.2 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 76.2 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -11918,7 +14344,7 @@
 			(uuid "71cf44c3-e730-47b6-a4fd-222e706245b1")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C35")
 					(unit 1)
@@ -11996,7 +14422,7 @@
 			(uuid "9af7bc7a-6c30-476d-b404-4463bf03ca47")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR013")
 					(unit 1)
@@ -12100,7 +14526,7 @@
 			(uuid "daff1011-73e3-4357-ae44-c388f6c8ae0c")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C24")
 					(unit 1)
@@ -12178,7 +14604,7 @@
 			(uuid "1632d49f-041b-496a-b5c1-8f3a24a3a3a8")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR023")
 					(unit 1)
@@ -12299,7 +14725,7 @@
 			(uuid "a21a92f8-d1ba-4ce5-97a1-17c53a72a7af")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "D1")
 					(unit 1)
@@ -12308,7 +14734,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:L")
+		(lib_id "L_Dotted")
 		(at 158.75 63.5 0)
 		(unit 1)
 		(body_style 1)
@@ -12407,17 +14833,6 @@
 				)
 			)
 		)
-		(property "Assembly note" "orient inductor dot beside pad 1 (+1V1), use Raspberry Pi reference regulator placement"
-			(at 158.75 63.5 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(pin "2"
 			(uuid "f61de5c1-7b63-46b7-8c7c-43db8cb91887")
 		)
@@ -12425,7 +14840,7 @@
 			(uuid "2df1b3e5-f807-41ed-b5ad-84f82fea54ca")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "L1")
 					(unit 1)
@@ -12507,7 +14922,7 @@
 			(uuid "276815ab-89e3-4cd0-ad08-8bce63e6cb62")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R9")
 					(unit 1)
@@ -12585,7 +15000,7 @@
 			(uuid "f8836f49-b52a-4570-aa02-9e4af7f45b7e")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR028")
 					(unit 1)
@@ -12706,7 +15121,7 @@
 			(uuid "19043cb7-37cc-44c1-beac-d333b754598a")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "D6")
 					(unit 1)
@@ -12716,7 +15131,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 123.19 111.76 0)
+		(at 110.49 111.76 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -12727,7 +15142,7 @@
 		(fields_autoplaced yes)
 		(uuid "de11baf3-a1df-4038-9bbb-0786b98a1982")
 		(property "Reference" "SW7"
-			(at 123.19 104.14 0)
+			(at 105.41 104.14 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12737,7 +15152,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 123.19 106.68 0)
+			(at 105.41 106.68 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12747,7 +15162,7 @@
 			)
 		)
 		(property "Footprint" "Button_Switch_SMD:SW_SPST_TS-1088-xR020"
-			(at 123.19 106.68 0)
+			(at 110.49 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12758,7 +15173,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 123.19 106.68 0)
+			(at 110.49 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12769,7 +15184,40 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 123.19 111.76 0)
+			(at 110.49 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C720477"
+			(at 110.49 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "XUNPU"
+			(at 110.49 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TS-1088-AR02016"
+			(at 110.49 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12786,7 +15234,7 @@
 			(uuid "556a42a1-4151-450e-96fe-4b557b370b67")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "SW7")
 					(unit 1)
@@ -12868,7 +15316,7 @@
 			(uuid "6daa78d4-b0bd-4939-ba6b-79bd9385eb25")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R12")
 					(unit 1)
@@ -12946,7 +15394,7 @@
 			(uuid "19c8449b-c819-43c0-8899-8e7f737f8fbb")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR011")
 					(unit 1)
@@ -13024,7 +15472,7 @@
 			(uuid "96bb0a96-9c44-4ffd-a58b-33b78318ec41")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR016")
 					(unit 1)
@@ -13097,6 +15545,39 @@
 				)
 			)
 		)
+		(property "LCSC Part #" "C720477"
+			(at 123.19 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "XUNPU"
+			(at 123.19 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TS-1088-AR02016"
+			(at 123.19 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "1d2a9684-982d-4fae-b9ff-42a38e108767")
 		)
@@ -13104,7 +15585,7 @@
 			(uuid "ac4c367e-dbb0-4711-805d-69a1e06c1c73")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "SW8")
 					(unit 1)
@@ -13231,7 +15712,7 @@
 			(uuid "376769fd-ae2b-4365-a7f9-a74c1e85a4c3")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "U3")
 					(unit 1)
@@ -13310,7 +15791,7 @@
 			(uuid "25a751ff-51a8-42b2-8871-12b9b0b6d8ea")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR01")
 					(unit 1)
@@ -13431,7 +15912,7 @@
 			(uuid "79513bf3-62ea-4b87-b7f5-d5f148c95b7c")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "D4")
 					(unit 1)
@@ -13509,7 +15990,7 @@
 			(uuid "e32f4b4d-baae-45bd-84fa-e8c74c30380c")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR07")
 					(unit 1)
@@ -13540,7 +16021,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "CPG151101S11-16"
 			(at 26.67 120.6499 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13562,7 +16043,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C41430893.pdf"
 			(at 20.32 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -13573,8 +16054,63 @@
 				)
 			)
 		)
-		(property "Description" "Push button switch, generic, two pins"
+		(property "Description" "MX hot-swap socket, HanElectricity CPG151101S11-16"
 			(at 25.4 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C41430893"
+			(at 20.32 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Layer Override" "bottom"
+			(at 20.32 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "FT Position Offset" "-0.635,-3.81"
+			(at 20.32 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "HanElectricity"
+			(at 20.32 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CPG151101S11-16"
+			(at 20.32 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13591,7 +16127,7 @@
 			(uuid "a12600ac-d3d4-4829-a742-5ce0b1272761")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "SW1")
 					(unit 1)
@@ -13669,9 +16205,88 @@
 			(uuid "80cfede7-3846-4a8f-baea-227fd0a4b0bd")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR030")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 200.66 137.16 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f5abb8c4-fe7d-462c-9c68-f33727cf4518")
+		(property "Reference" "#PWR035"
+			(at 204.47 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 196.85 137.1599 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 200.66 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 200.66 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 200.66 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "32bec18e-26ce-479e-8cc7-0c0654c18b74")
+		)
+		(instances
+			(project "macropad"
+				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
+					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -13749,9 +16364,106 @@
 			(uuid "06fd5069-3b15-4138-aefd-e3dd4b7b0498")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "macropad:X6511FRS-04-C85D30")
+		(at 215.9 153.67 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f73f60b4-8e51-4c47-88ba-24daf143d087")
+		(property "Reference" "J2"
+			(at 222.25 146.05 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "X6511FRS-04-C85D30"
+			(at 222.25 148.59 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "macropad:X6511FRS-04-C85D30"
+			(at 215.9 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2208221800_XKB-Connection-X6511FRS-04-C85D30_C5142237.pdf"
+			(at 231.14 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 215.9 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC Part #" "C5142237"
+			(at 215.9 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1681a136-abeb-4a91-91a5-61ce3a3b045d")
+		)
+		(pin "2"
+			(uuid "d844c3db-70d3-4e5e-9059-0d5f95d7580c")
+		)
+		(pin "3"
+			(uuid "fdb45de5-a791-41fc-a8ea-3250e2e4b9c2")
+		)
+		(pin "4"
+			(uuid "458e2a4e-3cc2-4928-be35-4bf77f2a0acf")
+		)
+		(instances
+			(project "macropad"
+				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -13827,7 +16539,7 @@
 			(uuid "ccc6e49e-6032-46ee-9496-d2b012c8524b")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "#PWR017")
 					(unit 1)
@@ -13901,7 +16613,29 @@
 				)
 			)
 		)
-		(property "MFGR" "generic"
+		(property "LCSC Part #" "C155422"
+			(at 101.6 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 101.6 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFGR" "Samsung Electro-Mechanics"
 			(at 101.6 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -13952,7 +16686,7 @@
 			(uuid "3b1f3009-b744-43de-b399-ae19a1286de8")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "C37")
 					(unit 1)
@@ -14034,7 +16768,7 @@
 			(uuid "b7bfe769-fcfd-46e0-96e9-bf4dc900bf83")
 		)
 		(instances
-			(project "IC Hack Macro Pad"
+			(project "macropad"
 				(path "/d4fb86f7-e10e-4290-b918-1b3e7fdfe5e9"
 					(reference "R10")
 					(unit 1)
